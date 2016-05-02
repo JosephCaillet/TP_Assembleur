@@ -10,3 +10,7 @@ Dependencies=
 [Project1]
 Filename=c3e2\c3e2.stp
 Dependencies=
+
+[Project2]
+Filename=c3e3\c3e3.stp
+Dependencies=

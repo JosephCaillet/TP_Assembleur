@@ -2,6 +2,7 @@
 Segment List
 ------------
 
+e:\TP\c3e2\c3e2.asm[1]   36-   55        80 -       80                 'ram0'  [void]
 e:\TP\c3e2\c3e2.asm[2]   56-  127      E000 -     E004                 'rom'  [text]
 e:\TP\c3e2\c3e2.asm[3]  128-  148      FFE0 -     FFFF                 'vectit'  [data]
 e:\TP\c3e2\st7lite2.asm[1]   24-  177         0 -       50                 'periph'  [void]
@@ -10,7 +11,7 @@ e:\TP\c3e2\st7lite2.asm[1]   24-  177         0 -       50                 'peri
 Class List
 ----------
 
-0 '        ram0'   byte from       80 to       7F (lim      17F) =  0% V
+0 '        ram0'   byte from       80 to       80 (lim      17F) =  0% D
 0 '       stack'   byte from      180 to      17F (lim      1FF) =  0% V
 0 '         rom'   byte from     E000 to     E004 (lim     FFDF) =  0% C
 0 '      vectit'   byte from     FFE0 to     FFFF (lim     FFFF) =100% S

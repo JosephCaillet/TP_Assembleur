@@ -98,11 +98,14 @@ cpt DS.B 1
 
 main:
 	RSP			; Reset Stack Pointer
+	
 init:
-	LD cpt,#0
-	LD A,#MAX
+	CLR cpt
+
 compter:
-	JREQ compter
+	LD A,cpt
+	CP A,#MAX
+	JREQ init
 	INC cpt
 	JP compter
 

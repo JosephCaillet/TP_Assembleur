@@ -1,4 +1,4 @@
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 02 16:28:05 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 02 16:55:37 2016
 Page 1  "SQUELET.ASM"
                                                e:\TP\c3e2\c3e2.asm
 
@@ -59,7 +59,7 @@ Page 1  "SQUELET.ASM"
   27  0000                                 EXTERN   LTICR.b       ; Lite Timer Input Capture 
                                                                   ;register
   28                                       
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 02 16:28:05 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 02 16:55:37 2016
 Page 2  "SQUELET.ASM"
                                                e:\TP\c3e2\ST7Lite2.INC
 
@@ -120,7 +120,7 @@ Page 2  "SQUELET.ASM"
   65                             ;*************************************************************
                                  ;*********
   66                             
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 02 16:28:05 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 02 16:55:37 2016
 Page 3  "SQUELET.ASM"
                                                e:\TP\c3e2\ST7Lite2.INC
 
@@ -181,7 +181,7 @@ Page 3  "SQUELET.ASM"
                                  ;*********
  106                             
  107  0000                                 EXTERN   RCCR.b        ; RC oscilator control register
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 02 16:28:05 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 02 16:55:37 2016
 Page 4  "SQUELET.ASM"
                                                e:\TP\c3e2\ST7Lite2.INC
 
@@ -243,7 +243,7 @@ Page 4  "SQUELET.ASM"
   19                             ;*************************************************************
                                  ;***********
   20                             ;
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 02 16:28:05 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 02 16:55:37 2016
 Page 5  "SQUELET.ASM"
                                                e:\TP\c3e2\c3e2.asm
 
@@ -304,7 +304,7 @@ Page 5  "SQUELET.ASM"
   66                             
   67                             ;*************************************************************
                                  ;***********
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 02 16:28:05 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 02 16:55:37 2016
 Page 6  "SQUELET.ASM"
                                                e:\TP\c3e2\c3e2.asm
 
@@ -349,65 +349,68 @@ Page 6  "SQUELET.ASM"
   98                             
   99                             main:     
  100  E000   9C                            RSP                    ; Reset Stack Pointer
- 101                             
- 102                                       
- 103                             boucl     
+ 101                                       
+ 102                             init:     
+ 103  E001   3F80                          CLR      cpt
  104                             
- 105                                       
- 106  E001   CCE001                        JP       boucl
- 107                             
- 108                             
- 109                             
- 110                             ;*************************************************************
+ 105                             compter:  
+ 106  E003   B680                          LD       A,cpt
+ 107  E005   A109                          CP       A,#MAX
+ 108  E007   27F8                          JREQ     init
+ 109  E009   3C80                          INC      cpt
+ 110  E00B   CCE003                        JP       compter
+ 111                             
+ 112                             
+ 113                             ;*************************************************************
                                  ;***********
- 111                             ;
- 112                             ;  ZONE DE DECLARATION DES SOUS-PROGRAMMES D'INTERRUPTION
- 113                             ;
- 114                             ;*************************************************************
-                                 ;***********
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 02 16:28:05 2016
+ 114                             ;
+ 115                             ;  ZONE DE DECLARATION DES SOUS-PROGRAMMES D'INTERRUPTION
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 02 16:55:37 2016
 Page 7  "SQUELET.ASM"
                                                e:\TP\c3e2\c3e2.asm
 
- 115                             
- 116                             
- 117  E004   80                  dummy_rt:  IRET                   ; Procédure vide : retour au 
-                                                                  ;programme principal.
+ 116                             ;
+ 117                             ;*************************************************************
+                                 ;***********
  118                             
  119                             
- 120                             
- 121                             ;*************************************************************
+ 120  E00E   80                  dummy_rt:  IRET                   ; Procédure vide : retour au 
+                                                                  ;programme principal.
+ 121                             
+ 122                             
+ 123                             
+ 124                             ;*************************************************************
                                  ;***********
- 122                             ;
- 123                             ;  ZONE DE DECLARATION DES VECTEURS D'INTERRUPTION
- 124                             ;
- 125                             ;*************************************************************
+ 125                             ;
+ 126                             ;  ZONE DE DECLARATION DES VECTEURS D'INTERRUPTION
+ 127                             ;
+ 128                             ;*************************************************************
                                  ;***********
- 126                             
- 127                             
- 128                                       segment  'vectit'
  129                             
  130                             
- 131  FFE0   E004                          DC.W     dummy_rt      ; Adresse FFE0-FFE1h
- 132  FFE2   E004                SPI_it    DC.W     dummy_rt      ; Adresse FFE2-FFE3h
- 133  FFE4   E004                lt_RTC1_it  DC.W     dummy_rt      ; Adresse FFE4-FFE5h
- 134  FFE6   E004                lt_IC_it  DC.W     dummy_rt      ; Adresse FFE6-FFE7h
- 135  FFE8   E004                at_timerover_it  DC.W     dummy_rt      ; Adresse FFE8-FFE9h
- 136  FFEA   E004                at_timerOC_it  DC.W     dummy_rt      ; Adresse FFEA-FFEBh
- 137  FFEC   E004                AVD_it    DC.W     dummy_rt      ; Adresse FFEC-FFEDh
- 138  FFEE   E004                          DC.W     dummy_rt      ; Adresse FFEE-FFEFh
- 139  FFF0   E004                lt_RTC2_it  DC.W     dummy_rt      ; Adresse FFF0-FFF1h
- 140  FFF2   E004                ext3_it   DC.W     dummy_rt      ; Adresse FFF2-FFF3h
- 141  FFF4   E004                ext2_it   DC.W     dummy_rt      ; Adresse FFF4-FFF5h
- 142  FFF6   E004                ext1_it   DC.W     dummy_rt      ; Adresse FFF6-FFF7h
- 143  FFF8   E004                ext0_it   DC.W     dummy_rt      ; Adresse FFF8-FFF9h
- 144  FFFA   E004                AWU_it    DC.W     dummy_rt      ; Adresse FFFA-FFFBh
- 145  FFFC   E004                softit    DC.W     dummy_rt      ; Adresse FFFC-FFFDh
- 146  FFFE   E000                reset     DC.W     main          ; Adresse FFFE-FFFFh
- 147                             
- 148                             
- 149  0000                                 END      
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 02 16:28:05 2016
+ 131                                       segment  'vectit'
+ 132                             
+ 133                             
+ 134  FFE0   E00E                          DC.W     dummy_rt      ; Adresse FFE0-FFE1h
+ 135  FFE2   E00E                SPI_it    DC.W     dummy_rt      ; Adresse FFE2-FFE3h
+ 136  FFE4   E00E                lt_RTC1_it  DC.W     dummy_rt      ; Adresse FFE4-FFE5h
+ 137  FFE6   E00E                lt_IC_it  DC.W     dummy_rt      ; Adresse FFE6-FFE7h
+ 138  FFE8   E00E                at_timerover_it  DC.W     dummy_rt      ; Adresse FFE8-FFE9h
+ 139  FFEA   E00E                at_timerOC_it  DC.W     dummy_rt      ; Adresse FFEA-FFEBh
+ 140  FFEC   E00E                AVD_it    DC.W     dummy_rt      ; Adresse FFEC-FFEDh
+ 141  FFEE   E00E                          DC.W     dummy_rt      ; Adresse FFEE-FFEFh
+ 142  FFF0   E00E                lt_RTC2_it  DC.W     dummy_rt      ; Adresse FFF0-FFF1h
+ 143  FFF2   E00E                ext3_it   DC.W     dummy_rt      ; Adresse FFF2-FFF3h
+ 144  FFF4   E00E                ext2_it   DC.W     dummy_rt      ; Adresse FFF4-FFF5h
+ 145  FFF6   E00E                ext1_it   DC.W     dummy_rt      ; Adresse FFF6-FFF7h
+ 146  FFF8   E00E                ext0_it   DC.W     dummy_rt      ; Adresse FFF8-FFF9h
+ 147  FFFA   E00E                AWU_it    DC.W     dummy_rt      ; Adresse FFFA-FFFBh
+ 148  FFFC   E00E                softit    DC.W     dummy_rt      ; Adresse FFFC-FFFDh
+ 149  FFFE   E000                reset     DC.W     main          ; Adresse FFFE-FFFFh
+ 150                             
+ 151                             
+ 152  0000                                 END      
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 02 16:55:37 2016
 Page 8  "SQUELET.ASM"
                                                e:\TP\c3e2\c3e2.asm
 
@@ -423,8 +426,8 @@ ADCDRH                                  35         no  BYTE  Internal   ABS     
 ADCDRL                                  36         no  BYTE  Internal   ABS     89  private  data         0     0  e:\TP\c3e2\ST7Lite2.INC
 AWUPR                                   49         no  BYTE  Internal   ABS    131  private  data         0     0  e:\TP\c3e2\ST7Lite2.INC
 AWUCSR                                  4A         no  BYTE  Internal   ABS    132  private  data         0     0  e:\TP\c3e2\ST7Lite2.INC
-AVD_it                                FFEC         no  WORD  Internal   ABS    137  private  data         4     2  -
-AWU_it                                FFFA         no  WORD  Internal   ABS    144  private  data         2     2  -
+AVD_it                                FFEC         no  WORD  Internal   ABS    140  private  data         4     2  -
+AWU_it                                FFFA         no  WORD  Internal   ABS    147  private  data         2     2  -
 
 BREAKCR                                 22         no  BYTE  Internal   ABS     54  private  data         0     0  e:\TP\c3e2\ST7Lite2.INC
 
@@ -468,7 +471,7 @@ MCCSR                                   38         no  BYTE  Internal   ABS    1
 MAX                                   0009         no  WORD  Internal   ABS     25  private  data         0     0  -
 
 PADR                                    00         no  BYTE  Internal   ABS     11  private  data         0     0  e:\TP\c3e2\ST7Lite2.INC
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 02 16:28:05 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 02 16:55:37 2016
 Page 9  "SQUELET.ASM"
                                                e:\TP\c3e2\c3e2.asm
 
@@ -489,36 +492,37 @@ SPIDR                                   31         no  BYTE  Internal   ABS     
 SPICR                                   32         no  BYTE  Internal   ABS     80  private  data         0     0  e:\TP\c3e2\ST7Lite2.INC
 SPISR                                   33         no  BYTE  Internal   ABS     81  private  data         0     0  e:\TP\c3e2\ST7Lite2.INC
 SICSR                                   3A         no  BYTE  Internal   ABS    108  private  data         0     0  e:\TP\c3e2\ST7Lite2.INC
-SPI_it                                FFE2         no  WORD  Internal   ABS    132  private  data         2     2  -
+SPI_it                                FFE2         no  WORD  Internal   ABS    135  private  data         2     2  -
 
 TRANCR                                  21         no  BYTE  Internal   ABS     53  private  data         0     0  e:\TP\c3e2\ST7Lite2.INC
 
 WDGCR                                   2E         no  BYTE  Internal   ABS     60  private  data         0     0  e:\TP\c3e2\ST7Lite2.INC
 
-at_timerover_it                       FFE8         no  WORD  Internal   ABS    135  private  data         2     2  -
-at_timerOC_it                         FFEA         no  WORD  Internal   ABS    136  private  data         2     2  -
-
-boucl                                 E001         no  WORD  Internal   ABS    103  private  text         3     0  -
+at_timerover_it                       FFE8         no  WORD  Internal   ABS    138  private  data         2     2  -
+at_timerOC_it                         FFEA         no  WORD  Internal   ABS    139  private  data         2     2  -
 
 cpt                                     80         no  BYTE  Internal   ABS     44  private  bss          1     1  -
+compter                               E003         no  WORD  Internal   ABS    105  private  text        11     0  -
 
-dummy_rt                              E004         no  WORD  Internal   ABS    117  private  text         1     0  -
+dummy_rt                              E00E         no  WORD  Internal   ABS    120  private  text         1     0  -
 
-ext3_it                               FFF2         no  WORD  Internal   ABS    140  private  data         2     2  -
-ext2_it                               FFF4         no  WORD  Internal   ABS    141  private  data         2     2  -
-ext1_it                               FFF6         no  WORD  Internal   ABS    142  private  data         2     2  -
-ext0_it                               FFF8         no  WORD  Internal   ABS    143  private  data         2     2  -
+ext3_it                               FFF2         no  WORD  Internal   ABS    143  private  data         2     2  -
+ext2_it                               FFF4         no  WORD  Internal   ABS    144  private  data         2     2  -
+ext1_it                               FFF6         no  WORD  Internal   ABS    145  private  data         2     2  -
+ext0_it                               FFF8         no  WORD  Internal   ABS    146  private  data         2     2  -
 
-lt_RTC1_it                            FFE4         no  WORD  Internal   ABS    133  private  data         2     2  -
-lt_IC_it                              FFE6         no  WORD  Internal   ABS    134  private  data         2     2  -
-lt_RTC2_it                            FFF0         no  WORD  Internal   ABS    139  private  data         2     2  -
+init                                  E001         no  WORD  Internal   ABS    102  private  text         2     0  -
+
+lt_RTC1_it                            FFE4         no  WORD  Internal   ABS    136  private  data         2     2  -
+lt_IC_it                              FFE6         no  WORD  Internal   ABS    137  private  data         2     2  -
+lt_RTC2_it                            FFF0         no  WORD  Internal   ABS    142  private  data         2     2  -
 
 main                                  E000         no  WORD  Internal   ABS     99  private  text         1     0  -
 
-reset                                 FFFE         no  WORD  Internal   ABS    146  private  data         2     2  -
+reset                                 FFFE         no  WORD  Internal   ABS    149  private  data         2     2  -
 
-softit                                FFFC         no  WORD  Internal   ABS    145  private  data         2     2  -
+softit                                FFFC         no  WORD  Internal   ABS    148  private  data         2     2  -
 
 
-80 labels
+81 labels
 No errors on assembly of 'e:\TP\c3e2\c3e2.asm'

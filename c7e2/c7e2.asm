@@ -102,6 +102,48 @@ init_port_spi:
 
 ;----------------------------------------------------------;
 
+init_io_ports:
+	LD	A,PADDR;init PADDR dire quoi est en push/pull etc
+	AND	A,#%11110111
+	;OR	A,#%00000000
+	LD	PADDR,A
+	
+	LD	A,PAOR;init PAOR
+	;AND	A,#%11111111
+	OR	A,#%00001000
+	LD	PAOR,A
+	
+	LD	A,PBDDR;init PADDR dire quoi est en push/pull etc
+	AND	A,#%11111110
+	;OR	A,#%00000000
+	LD	PBDDR,A
+	
+	LD	A,PBOR;init PAOR
+	;AND	A,#%11111111
+	OR	A,#%00000001
+	LD	PBOR,A
+	
+	RET
+
+;----------------------------------------------------------;
+	
+init_int_mask:
+	ld a,EICR
+	and a,#%10111110
+	or a,#%10000010
+	ld EICR, a
+	
+	ld a,EISR
+	and a,#%00111111
+	or a,#%00000011
+	ld EISR,a
+	
+	rim
+	
+	ret
+
+;----------------------------------------------------------;
+
 init_chrono:
 	clr valeurUnite
 	clr valeurDizaine
@@ -239,7 +281,14 @@ boucl
 
 dummy_rt:	IRET	; Procédure vide : retour au programme principal.
 
+int_marche:
+	ld a,#1
+	ld running,a
+	iret
 
+int_arret:
+	clr running
+	iret
 
 ;************************************************************************
 ;
@@ -260,10 +309,10 @@ at_timerOC_it	DC.W	dummy_rt	; Adresse FFEA-FFEBh
 AVD_it		DC.W	dummy_rt	; Adresse FFEC-FFEDh
 		DC.W	dummy_rt	; Adresse FFEE-FFEFh
 lt_RTC2_it	DC.W	dummy_rt	; Adresse FFF0-FFF1h
-ext3_it		DC.W	dummy_rt	; Adresse FFF2-FFF3h
+ext3_it		DC.W	int_arret	; Adresse FFF2-FFF3h
 ext2_it		DC.W	dummy_rt	; Adresse FFF4-FFF5h
 ext1_it		DC.W	dummy_rt	; Adresse FFF6-FFF7h
-ext0_it		DC.W	dummy_rt	; Adresse FFF8-FFF9h
+ext0_it		DC.W	int_marche	; Adresse FFF8-FFF9h
 AWU_it		DC.W	dummy_rt	; Adresse FFFA-FFFBh
 softit		DC.W	dummy_rt	; Adresse FFFC-FFFDh
 reset		DC.W	main		; Adresse FFFE-FFFFh

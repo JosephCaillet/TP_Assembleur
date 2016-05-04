@@ -1,4 +1,4 @@
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 1  Assembler
                                                e:\TP\c7e2\st7lite2.asm
 
@@ -59,7 +59,7 @@ Page 1  Assembler
                                  ;*********
   43                             ;		Lite Timer Registers
   44                             ;*************************************************************
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 2  Assembler
                                                e:\TP\c7e2\st7lite2.asm
 
@@ -120,7 +120,7 @@ Page 2  Assembler
   79                             reserved1  
   80  0023                                 DS.B     11            ;  unused
   81                                       
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 3  Assembler
                                                e:\TP\c7e2\st7lite2.asm
 
@@ -181,7 +181,7 @@ Page 3  Assembler
  121                             
  122                             ;*************************************************************
                                  ;*********
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 4  Assembler
                                                e:\TP\c7e2\st7lite2.asm
 
@@ -242,7 +242,7 @@ Page 4  Assembler
  166                             ;*************************************************************
                                  ;*********
  167                             
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 5  Assembler
                                                e:\TP\c7e2\st7lite2.asm
 
@@ -289,7 +289,7 @@ Page 5  Assembler
                                  ;*********
  200                             
  201  FFE0                                 end      
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 6  Assembler
                                                e:\TP\c7e2\st7lite2.asm
 
@@ -350,7 +350,7 @@ PADR                                    00         no  BYTE  Internal   ABS     
 PADDR                                   01         no  BYTE  Internal   ABS     32  public   bss          1     1  -
 PAOR                                    02         no  BYTE  Internal   ABS     33  public   bss          1     1  -
 PBDR                                    03         no  BYTE  Internal   ABS     35  public   bss          1     1  -
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 7  Assembler
                                                e:\TP\c7e2\st7lite2.asm
 

@@ -215,18 +215,23 @@ boucle2:
 
 main:
 	RSP			; Reset Stack Pointer
-	
-	call init_port_spi
-	call init_aff
-	call init_chrono
+	RIM
+	call	init_port_spi
+	call	init_aff
+	call	init_chrono
 		
 boucl
-	call aff_u
-	call aff_d
+	call	aff_u
+	call	aff_d
 	
-	call inc_aff
+	ld	A,running
+	cp	A,#0
+	JREQ skip_aff	
 	
-	call tempo
+	call	inc_aff
+
+skip_aff:
+	call	tempo
 
 	JP	boucl
 

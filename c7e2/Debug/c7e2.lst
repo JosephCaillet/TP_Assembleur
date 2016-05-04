@@ -1,4 +1,4 @@
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 1  "c6e4.ASM"
                                                e:\TP\c7e2\c7e2.asm
 
@@ -59,7 +59,7 @@ Page 1  "c6e4.ASM"
   27  0000                                 EXTERN   LTICR.b       ; Lite Timer Input Capture 
                                                                   ;register
   28                                       
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 2  "c6e4.ASM"
                                                e:\TP\c7e2\ST7Lite2.INC
 
@@ -120,7 +120,7 @@ Page 2  "c6e4.ASM"
   65                             ;*************************************************************
                                  ;*********
   66                             
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 3  "c6e4.ASM"
                                                e:\TP\c7e2\ST7Lite2.INC
 
@@ -181,7 +181,7 @@ Page 3  "c6e4.ASM"
                                  ;*********
  106                             
  107  0000                                 EXTERN   RCCR.b        ; RC oscilator control register
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 4  "c6e4.ASM"
                                                e:\TP\c7e2\ST7Lite2.INC
 
@@ -243,7 +243,7 @@ Page 4  "c6e4.ASM"
    4                             ; AUTHOR:               Nicolas Coquelle
    5                             ; DESCRIPTION:          Bibliothèque pour l'utilisation d'un 
                                  ;MAX7219
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 5  "c6e4.ASM"
                                                e:\TP\c7e2\MAX7219.INC
 
@@ -305,270 +305,276 @@ Page 5  "c6e4.ASM"
   45                             
   46  0088                       valeurUnite  DS.B     1
   47  0089                       valeurDizaine  DS.B     1
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 6  "c6e4.ASM"
                                                e:\TP\c7e2\c7e2.asm
 
   48  008A                       retenue   DS.B     1
-  49                             
+  49  008B                       running   DS.B     1
   50                             
-  51                             ;*************************************************************
+  51                             
+  52                             ;*************************************************************
                                  ;***********
-  52                             ;
-  53                             ;  FIN DE LA ZONE DE DECLARATION DES VARIABLES
-  54                             ;
-  55                             ;*************************************************************
+  53                             ;
+  54                             ;  FIN DE LA ZONE DE DECLARATION DES VARIABLES
+  55                             ;
+  56                             ;*************************************************************
                                  ;***********
-  56                             
   57                             
-  58  008B                                 WORDS    
-  59                             
-  60                                       segment  byte 'rom'
-  61                             
-  62                             ;*************************************************************
+  58                             
+  59  008C                                 WORDS    
+  60                             
+  61                                       segment  byte 'rom'
+  62                             
+  63                             ;*************************************************************
                                  ;***********
-  63                             ;
-  64                             ;  ZONE DE DECLARATION DES CONSTANTES
-  65                             ;
-  66                             ;*************************************************************
+  64                             ;
+  65                             ;  ZONE DE DECLARATION DES CONSTANTES
+  66                             ;
+  67                             ;*************************************************************
                                  ;***********
-  67                             
   68                             
   69                             
   70                             
-  71                             ;*************************************************************
+  71                             
+  72                             ;*************************************************************
                                  ;***********
-  72                             ;
-  73                             ;  FIN DE LA ZONE DE DECLARATION DES CONSTANTES
-  74                             ;
-  75                             ;*************************************************************
+  73                             ;
+  74                             ;  FIN DE LA ZONE DE DECLARATION DES CONSTANTES
+  75                             ;
+  76                             ;*************************************************************
                                  ;***********
-  76                             
-  77                             ;-------------------------------------------------------------
+  77                             
+  78                             ;-------------------------------------------------------------
                                  ;-----------
-  78                             
-  79                             ;*************************************************************
+  79                             
+  80                             ;*************************************************************
                                  ;***********
-  80                             ;
-  81                             ;  ZONE DE DECLARATION DES SOUS-PROGRAMMES
-  82                             ;
-  83                             ;*************************************************************
+  81                             ;
+  82                             ;  ZONE DE DECLARATION DES SOUS-PROGRAMMES
+  83                             ;
+  84                             ;*************************************************************
                                  ;***********
-  84                             
-  85                             init_port_spi:  
-  86  E0FD   A60C                          ld       a,#$0C
-  87  E0FF   B732                          ld       SPICR,a
-  88  E101   A603                          ld       a,#$03
-  89  E103   B733                          ld       SPISR,a
-  90  E105   A65C                          ld       a,#$5C
-  91  E107   B732                          ld       SPICR,a
-  92                                       
-  93  E109   B604                          LD       A,PBDDR       ;init PBDDR dire quoi est en 
+  85                             
+  86                             init_port_spi:  
+  87  E0FD   A60C                          ld       a,#$0C
+  88  E0FF   B732                          ld       SPICR,a
+  89  E101   A603                          ld       a,#$03
+  90  E103   B733                          ld       SPISR,a
+  91  E105   A65C                          ld       a,#$5C
+  92  E107   B732                          ld       SPICR,a
+  93                                       
+  94  E109   B604                          LD       A,PBDDR       ;init PBDDR dire quoi est en 
                                                                   ;push/pull etc
-  94  E10B   AA04                          OR       A,#%00000100
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 7  "c6e4.ASM"
                                                e:\TP\c7e2\c7e2.asm
 
-  95  E10D   B704                          LD       PBDDR,A
-  96                                       
-  97  E10F   B605                          LD       A,PBOR        ;init PBOR
-  98  E111   AA04                          OR       A,#%00000100
-  99  E113   B705                          LD       PBOR,A
- 100  E115   81                            RET      
- 101                             
- 102                             ;----------------------------------------------------------;
- 103                             
- 104                             init_chrono:  
- 105  E116   3F88                          clr      valeurUnite
- 106  E118   3F89                          clr      valeurDizaine
- 107  E11A   3F8A                          clr      retenue
- 108  E11C   81                            ret      
- 109                             
- 110                             ;----------------------------------------------------------;
- 111                             
- 112                             init_aff:  
- 113  E11D   CDE010                        call     MAX7219_Init
- 114  E120   CDE081                        call     MAX7219_Clear
- 115  E123   81                            ret      
- 116                             
- 117                             ;----------------------------------------------------------;
- 118                             
- 119                             inc_aff:  
- 120  E124   B688                          ld       a,valeurUnite
- 121                                                              ;--- if(a == 9) ---
- 122  E126   A109                          cp       a,#9
- 123  E128   260A                          jrne     inc_u
- 124                                                              ;--- then{ ---
- 125  E12A   3F88                          clr      valeurUnite
- 126  E12C   BE8A                          ld       x,retenue
- 127  E12E   5C                            inc      x
- 128  E12F   BF8A                          ld       retenue, x
- 129  E131   CCE137                        jp       n_inc_u
- 130                                                              ;--- }end_then ---
- 131                                                              ;--- else{ ---
- 132                             inc_u     
- 133  E134   4C                            inc      a
- 134  E135   B788                          ld       valeurUnite, a
- 135                                                              ;--- }end_else ---
- 136                                       
- 137                             n_inc_u   
- 138  E137   BE8A                          ld       x,retenue
- 139                                                              ;--- if(x != 0) ---
- 140  E139   A300                          cp       x,#0
- 141  E13B   2713                          jreq     n_inc_d
- 142                                                              ;--- then{ ---
- 143  E13D   B689                          ld       a,valeurDizaine
- 144                                                              ;--- if(a == 9) ---
- 145  E13F   A109                          cp       a,#9
- 146  E141   2607                          jrne     inc_d
- 147                                                              ;--- then{ ---
- 148  E143   3F89                          clr      valeurDizaine
- 149  E145   3F8A                          clr      retenue
- 150  E147   CCE150                        jp       n_inc_d
- 151                                                              ;--- }end_then ---
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+  95  E10B   AA04                          OR       A,#%00000100
+  96  E10D   B704                          LD       PBDDR,A
+  97                                       
+  98  E10F   B605                          LD       A,PBOR        ;init PBOR
+  99  E111   AA04                          OR       A,#%00000100
+ 100  E113   B705                          LD       PBOR,A
+ 101  E115   81                            RET      
+ 102                             
+ 103                             ;----------------------------------------------------------;
+ 104                             
+ 105                             init_chrono:  
+ 106  E116   3F88                          clr      valeurUnite
+ 107  E118   3F89                          clr      valeurDizaine
+ 108  E11A   3F8A                          clr      retenue
+ 109  E11C   81                            ret      
+ 110                             
+ 111                             ;----------------------------------------------------------;
+ 112                             
+ 113                             init_aff:  
+ 114  E11D   CDE010                        call     MAX7219_Init
+ 115  E120   CDE081                        call     MAX7219_Clear
+ 116  E123   81                            ret      
+ 117                             
+ 118                             ;----------------------------------------------------------;
+ 119                             
+ 120                             inc_aff:  
+ 121  E124   B688                          ld       a,valeurUnite
+ 122                                                              ;--- if(a == 9) ---
+ 123  E126   A109                          cp       a,#9
+ 124  E128   260A                          jrne     inc_u
+ 125                                                              ;--- then{ ---
+ 126  E12A   3F88                          clr      valeurUnite
+ 127  E12C   BE8A                          ld       x,retenue
+ 128  E12E   5C                            inc      x
+ 129  E12F   BF8A                          ld       retenue, x
+ 130  E131   CCE137                        jp       n_inc_u
+ 131                                                              ;--- }end_then ---
+ 132                                                              ;--- else{ ---
+ 133                             inc_u     
+ 134  E134   4C                            inc      a
+ 135  E135   B788                          ld       valeurUnite, a
+ 136                                                              ;--- }end_else ---
+ 137                                       
+ 138                             n_inc_u   
+ 139  E137   BE8A                          ld       x,retenue
+ 140                                                              ;--- if(x != 0) ---
+ 141  E139   A300                          cp       x,#0
+ 142  E13B   2713                          jreq     n_inc_d
+ 143                                                              ;--- then{ ---
+ 144  E13D   B689                          ld       a,valeurDizaine
+ 145                                                              ;--- if(a == 9) ---
+ 146  E13F   A109                          cp       a,#9
+ 147  E141   2607                          jrne     inc_d
+ 148                                                              ;--- then{ ---
+ 149  E143   3F89                          clr      valeurDizaine
+ 150  E145   3F8A                          clr      retenue
+ 151  E147   CCE150                        jp       n_inc_d
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 8  "c6e4.ASM"
                                                e:\TP\c7e2\c7e2.asm
 
- 152                                                              ;--- else{ ---
- 153                             inc_d     
- 154  E14A   BB8A                          add      a,retenue
- 155  E14C   B789                          ld       valeurDizaine, a
- 156                                                              ;--- }end_else ---
- 157  E14E   3F8A                          clr      retenue
- 158                                                              ;-- }end_then ---
- 159                             n_inc_d   
- 160                                       
- 161  E150   81                            ret      
- 162                             
- 163                             ;----------------------------------------------------------;
- 164                             
- 165                             aff_u:    
- 166  E151   A604                          ld       a,#4
- 167  E153   B781                          ld       DisplayChar_Digit,a
- 168  E155   B688                          ld       a, valeurUnite
- 169  E157   B782                          ld       DisplayChar_Character,a
- 170  E159   CDE092                        call     MAX7219_DisplayChar
- 171  E15C   81                            ret      
- 172                             
- 173                             ;----------------------------------------------------------;
- 174                             
- 175                             aff_d:    
- 176  E15D   A603                          ld       a,#3
- 177  E15F   B781                          ld       DisplayChar_Digit,a
- 178  E161   B689                          ld       a, valeurDizaine
- 179  E163   B782                          ld       DisplayChar_Character,a
- 180  E165   CDE092                        call     MAX7219_DisplayChar
- 181  E168   81                            ret      
- 182                             
- 183                             ;----------------------------------------------------------;
- 184                             
- 185                             tempo:    
- 186                             initBoucle1:  
- 187  E169   5F                            CLR      X
- 188                             boucle1:  
- 189  E16A   5C                            INC      X
- 190  E16B   CDE173                        CALL     initBoucle2
- 191  E16E   A3C1                          CP       X,#193
- 192  E170   26F8                          JRNE     boucle1
- 193  E172   81                            RET      
- 194                             initBoucle2:  
- 195  E173   905F                          CLR      Y
- 196                             boucle2:  
- 197  E175   905C                          INC      Y
- 198  E177   90A3C2                        CP       Y,#194
- 199  E17A   26F9                          JRNE     boucle2
- 200  E17C   81                            RET      
- 201                             
- 202                             ;*************************************************************
+ 152                                                              ;--- }end_then ---
+ 153                                                              ;--- else{ ---
+ 154                             inc_d     
+ 155  E14A   BB8A                          add      a,retenue
+ 156  E14C   B789                          ld       valeurDizaine, a
+ 157                                                              ;--- }end_else ---
+ 158  E14E   3F8A                          clr      retenue
+ 159                                                              ;-- }end_then ---
+ 160                             n_inc_d   
+ 161                                       
+ 162  E150   81                            ret      
+ 163                             
+ 164                             ;----------------------------------------------------------;
+ 165                             
+ 166                             aff_u:    
+ 167  E151   A604                          ld       a,#4
+ 168  E153   B781                          ld       DisplayChar_Digit,a
+ 169  E155   B688                          ld       a, valeurUnite
+ 170  E157   B782                          ld       DisplayChar_Character,a
+ 171  E159   CDE092                        call     MAX7219_DisplayChar
+ 172  E15C   81                            ret      
+ 173                             
+ 174                             ;----------------------------------------------------------;
+ 175                             
+ 176                             aff_d:    
+ 177  E15D   A603                          ld       a,#3
+ 178  E15F   B781                          ld       DisplayChar_Digit,a
+ 179  E161   B689                          ld       a, valeurDizaine
+ 180  E163   B782                          ld       DisplayChar_Character,a
+ 181  E165   CDE092                        call     MAX7219_DisplayChar
+ 182  E168   81                            ret      
+ 183                             
+ 184                             ;----------------------------------------------------------;
+ 185                             
+ 186                             tempo:    
+ 187                             initBoucle1:  
+ 188  E169   5F                            CLR      X
+ 189                             boucle1:  
+ 190  E16A   5C                            INC      X
+ 191  E16B   CDE173                        CALL     initBoucle2
+ 192  E16E   A3C1                          CP       X,#193
+ 193  E170   26F8                          JRNE     boucle1
+ 194  E172   81                            RET      
+ 195                             initBoucle2:  
+ 196  E173   905F                          CLR      Y
+ 197                             boucle2:  
+ 198  E175   905C                          INC      Y
+ 199  E177   90A3C2                        CP       Y,#194
+ 200  E17A   26F9                          JRNE     boucle2
+ 201  E17C   81                            RET      
+ 202                             
+ 203                             ;*************************************************************
                                  ;***********
- 203                             ;
- 204                             ;  FIN DE LA ZONE DE DECLARATION DES SOUS-PROGRAMMES
- 205                             ;
- 206                             ;*************************************************************
-                                 ;***********
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+ 204                             ;
+ 205                             ;  FIN DE LA ZONE DE DECLARATION DES SOUS-PROGRAMMES
+ 206                             ;
+ 207                             ;*************************************************************
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 9  "c6e4.ASM"
                                                e:\TP\c7e2\c7e2.asm
 
- 207                             
+                                 ;***********
  208                             
- 209                             ;*************************************************************
+ 209                             
+ 210                             ;*************************************************************
                                  ;***********
- 210                             ;
- 211                             ;  PROGRAMME PRINCIPAL
- 212                             ;
- 213                             ;*************************************************************
+ 211                             ;
+ 212                             ;  PROGRAMME PRINCIPAL
+ 213                             ;
+ 214                             ;*************************************************************
                                  ;***********
- 214                             
- 215                             main:     
- 216  E17D   9C                            RSP                    ; Reset Stack Pointer
- 217                                       
- 218  E17E   CDE0FD                        call     init_port_spi
- 219  E181   CDE11D                        call     init_aff
- 220  E184   CDE116                        call     init_chrono
- 221                                       
- 222                             boucl     
- 223  E187   CDE151                        call     aff_u
- 224  E18A   CDE15D                        call     aff_d
- 225                                       
- 226  E18D   CDE124                        call     inc_aff
- 227                                       
- 228  E190   CDE169                        call     tempo
- 229                             
- 230  E193   CCE187                        JP       boucl
- 231                             
- 232                             ;*************************************************************
-                                 ;***********
- 233                             ;
- 234                             ;  ZONE DE DECLARATION DES SOUS-PROGRAMMES D'INTERRUPTION
- 235                             ;
- 236                             ;*************************************************************
-                                 ;***********
+ 215                             
+ 216                             main:     
+ 217  E17D   9C                            RSP                    ; Reset Stack Pointer
+ 218  E17E   9A                            RIM      
+ 219  E17F   CDE0FD                        call     init_port_spi
+ 220  E182   CDE11D                        call     init_aff
+ 221  E185   CDE116                        call     init_chrono
+ 222                                       
+ 223                             boucl     
+ 224  E188   CDE151                        call     aff_u
+ 225  E18B   CDE15D                        call     aff_d
+ 226                                       
+ 227  E18E   B68B                          ld       A,running
+ 228  E190   A100                          cp       A,#0
+ 229  E192   2703                          JREQ     skip_aff      
+ 230                                       
+ 231  E194   CDE124                        call     inc_aff
+ 232                             
+ 233                             skip_aff:  
+ 234  E197   CDE169                        call     tempo
+ 235                             
+ 236  E19A   CCE188                        JP       boucl
  237                             
- 238                             
- 239  E196   80                  dummy_rt:  IRET                   ; Procédure vide : retour au 
+ 238                             ;*************************************************************
+                                 ;***********
+ 239                             ;
+ 240                             ;  ZONE DE DECLARATION DES SOUS-PROGRAMMES D'INTERRUPTION
+ 241                             ;
+ 242                             ;*************************************************************
+                                 ;***********
+ 243                             
+ 244                             
+ 245  E19D   80                  dummy_rt:  IRET                   ; Procédure vide : retour au 
                                                                   ;programme principal.
- 240                             
- 241                             
- 242                             
- 243                             ;*************************************************************
-                                 ;***********
- 244                             ;
- 245                             ;  ZONE DE DECLARATION DES VECTEURS D'INTERRUPTION
- 246                             ;
- 247                             ;*************************************************************
-                                 ;***********
+ 246                             
+ 247                             
  248                             
- 249                             
- 250                                       segment  'vectit'
- 251                             
- 252                             
- 253  FFE0   E196                          DC.W     dummy_rt      ; Adresse FFE0-FFE1h
- 254  FFE2   E196                SPI_it    DC.W     dummy_rt      ; Adresse FFE2-FFE3h
- 255  FFE4   E196                lt_RTC1_it  DC.W     dummy_rt      ; Adresse FFE4-FFE5h
- 256  FFE6   E196                lt_IC_it  DC.W     dummy_rt      ; Adresse FFE6-FFE7h
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+ 249                             ;*************************************************************
+                                 ;***********
+ 250                             ;
+ 251                             ;  ZONE DE DECLARATION DES VECTEURS D'INTERRUPTION
+ 252                             ;
+ 253                             ;*************************************************************
+                                 ;***********
+ 254                             
+ 255                             
+ 256                                       segment  'vectit'
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 10  "c6e4.ASM"
                                                e:\TP\c7e2\c7e2.asm
 
- 257  FFE8   E196                at_timerover_it  DC.W     dummy_rt      ; Adresse FFE8-FFE9h
- 258  FFEA   E196                at_timerOC_it  DC.W     dummy_rt      ; Adresse FFEA-FFEBh
- 259  FFEC   E196                AVD_it    DC.W     dummy_rt      ; Adresse FFEC-FFEDh
- 260  FFEE   E196                          DC.W     dummy_rt      ; Adresse FFEE-FFEFh
- 261  FFF0   E196                lt_RTC2_it  DC.W     dummy_rt      ; Adresse FFF0-FFF1h
- 262  FFF2   E196                ext3_it   DC.W     dummy_rt      ; Adresse FFF2-FFF3h
- 263  FFF4   E196                ext2_it   DC.W     dummy_rt      ; Adresse FFF4-FFF5h
- 264  FFF6   E196                ext1_it   DC.W     dummy_rt      ; Adresse FFF6-FFF7h
- 265  FFF8   E196                ext0_it   DC.W     dummy_rt      ; Adresse FFF8-FFF9h
- 266  FFFA   E196                AWU_it    DC.W     dummy_rt      ; Adresse FFFA-FFFBh
- 267  FFFC   E196                softit    DC.W     dummy_rt      ; Adresse FFFC-FFFDh
- 268  FFFE   E17D                reset     DC.W     main          ; Adresse FFFE-FFFFh
- 269                             
- 270                             
- 271  0000                                 END      
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+ 257                             
+ 258                             
+ 259  FFE0   E19D                          DC.W     dummy_rt      ; Adresse FFE0-FFE1h
+ 260  FFE2   E19D                SPI_it    DC.W     dummy_rt      ; Adresse FFE2-FFE3h
+ 261  FFE4   E19D                lt_RTC1_it  DC.W     dummy_rt      ; Adresse FFE4-FFE5h
+ 262  FFE6   E19D                lt_IC_it  DC.W     dummy_rt      ; Adresse FFE6-FFE7h
+ 263  FFE8   E19D                at_timerover_it  DC.W     dummy_rt      ; Adresse FFE8-FFE9h
+ 264  FFEA   E19D                at_timerOC_it  DC.W     dummy_rt      ; Adresse FFEA-FFEBh
+ 265  FFEC   E19D                AVD_it    DC.W     dummy_rt      ; Adresse FFEC-FFEDh
+ 266  FFEE   E19D                          DC.W     dummy_rt      ; Adresse FFEE-FFEFh
+ 267  FFF0   E19D                lt_RTC2_it  DC.W     dummy_rt      ; Adresse FFF0-FFF1h
+ 268  FFF2   E19D                ext3_it   DC.W     dummy_rt      ; Adresse FFF2-FFF3h
+ 269  FFF4   E19D                ext2_it   DC.W     dummy_rt      ; Adresse FFF4-FFF5h
+ 270  FFF6   E19D                ext1_it   DC.W     dummy_rt      ; Adresse FFF6-FFF7h
+ 271  FFF8   E19D                ext0_it   DC.W     dummy_rt      ; Adresse FFF8-FFF9h
+ 272  FFFA   E19D                AWU_it    DC.W     dummy_rt      ; Adresse FFFA-FFFBh
+ 273  FFFC   E19D                softit    DC.W     dummy_rt      ; Adresse FFFC-FFFDh
+ 274  FFFE   E17D                reset     DC.W     main          ; Adresse FFFE-FFFFh
+ 275                             
+ 276                             
+ 277  0000                                 END      
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 11  "c6e4.ASM"
                                                e:\TP\c7e2\c7e2.asm
 
@@ -584,8 +590,8 @@ ADCDRH                                  35         no  BYTE  Internal   ABS     
 ADCDRL                                  36         no  BYTE  Internal   ABS     89  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
 AWUPR                                   49         no  BYTE  Internal   ABS    131  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
 AWUCSR                                  4A         no  BYTE  Internal   ABS    132  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
-AVD_it                                FFEC         no  WORD  Internal   ABS    259  private  data         4     2  -
-AWU_it                                FFFA         no  WORD  Internal   ABS    266  private  data         2     2  -
+AVD_it                                FFEC         no  WORD  Internal   ABS    265  private  data         4     2  -
+AWU_it                                FFFA         no  WORD  Internal   ABS    272  private  data         2     2  -
 
 BREAKCR                                 22         no  BYTE  Internal   ABS     54  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
 
@@ -629,7 +635,7 @@ LTICR                                   0C         no  BYTE  Internal   ABS     
 
 MCCSR                                   38         no  BYTE  Internal   ABS    101  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
 MAX7219_Init                          E010         no  WORD  Internal   ABS      9  private  data         0     0  e:\TP\c7e2\MAX7219.INC
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 12  "c6e4.ASM"
                                                e:\TP\c7e2\c7e2.asm
 
@@ -662,60 +668,62 @@ SPICR                                   32         no  BYTE  Internal   ABS     
 SPISR                                   33         no  BYTE  Internal   ABS     81  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
 SICSR                                   3A         no  BYTE  Internal   ABS    108  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
 SetBrightness_Bright                    80         no  BYTE  Internal   ABS     14  private  data         0     0  e:\TP\c7e2\MAX7219.INC
-SPI_it                                FFE2         no  WORD  Internal   ABS    254  private  data         2     2  -
+SPI_it                                FFE2         no  WORD  Internal   ABS    260  private  data         2     2  -
 
 TRANCR                                  21         no  BYTE  Internal   ABS     53  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
 
 WDGCR                                   2E         no  BYTE  Internal   ABS     60  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
 
-aff_u                                 E151         no  WORD  Internal   ABS    165  private  text        12     0  -
-aff_d                                 E15D         no  WORD  Internal   ABS    175  private  text        12     0  -
-at_timerover_it                       FFE8         no  WORD  Internal   ABS    257  private  data         2     2  -
-at_timerOC_it                         FFEA         no  WORD  Internal   ABS    258  private  data         2     2  -
+aff_u                                 E151         no  WORD  Internal   ABS    166  private  text        12     0  -
+aff_d                                 E15D         no  WORD  Internal   ABS    176  private  text        12     0  -
+at_timerover_it                       FFE8         no  WORD  Internal   ABS    263  private  data         2     2  -
+at_timerOC_it                         FFEA         no  WORD  Internal   ABS    264  private  data         2     2  -
 
-boucle1                               E16A         no  WORD  Internal   ABS    188  private  text         9     0  -
-boucle2                               E175         no  WORD  Internal   ABS    196  private  text         8     0  -
-boucl                                 E187         no  WORD  Internal   ABS    222  private  text        15     0  -
+boucle1                               E16A         no  WORD  Internal   ABS    189  private  text         9     0  -
+boucle2                               E175         no  WORD  Internal   ABS    197  private  text         8     0  -
+boucl                                 E188         no  WORD  Internal   ABS    223  private  text        15     0  -
 
-dummy_rt                              E196         no  WORD  Internal   ABS    239  private  text         1     0  -
+dummy_rt                              E19D         no  WORD  Internal   ABS    245  private  text         1     0  -
 
-ext3_it                               FFF2         no  WORD  Internal   ABS    262  private  data         2     2  -
-ext2_it                               FFF4         no  WORD  Internal   ABS    263  private  data         2     2  -
-ext1_it                               FFF6         no  WORD  Internal   ABS    264  private  data         2     2  -
-ext0_it                               FFF8         no  WORD  Internal   ABS    265  private  data         2     2  -
+ext3_it                               FFF2         no  WORD  Internal   ABS    268  private  data         2     2  -
+ext2_it                               FFF4         no  WORD  Internal   ABS    269  private  data         2     2  -
+ext1_it                               FFF6         no  WORD  Internal   ABS    270  private  data         2     2  -
+ext0_it                               FFF8         no  WORD  Internal   ABS    271  private  data         2     2  -
 
-init_port_spi                         E0FD         no  WORD  Internal   ABS     85  private  text        25     0  -
-init_chrono                           E116         no  WORD  Internal   ABS    104  private  text         7     0  -
-init_aff                              E11D         no  WORD  Internal   ABS    112  private  text         7     0  -
-inc_aff                               E124         no  WORD  Internal   ABS    119  private  text        16     0  -
-inc_u                                 E134         no  WORD  Internal   ABS    132  private  text         3     0  -
-inc_d                                 E14A         no  WORD  Internal   ABS    153  private  text         6     0  -
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:32:27 2016
+init_port_spi                         E0FD         no  WORD  Internal   ABS     86  private  text        25     0  -
+init_chrono                           E116         no  WORD  Internal   ABS    105  private  text         7     0  -
+init_aff                              E11D         no  WORD  Internal   ABS    113  private  text         7     0  -
+inc_aff                               E124         no  WORD  Internal   ABS    120  private  text        16     0  -
+inc_u                                 E134         no  WORD  Internal   ABS    133  private  text         3     0  -
+inc_d                                 E14A         no  WORD  Internal   ABS    154  private  text         6     0  -
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
 Page 13  "c6e4.ASM"
                                                e:\TP\c7e2\c7e2.asm
 
-initBoucle1                           E169         no  WORD  Internal   ABS    186  private  text         1     0  -
-initBoucle2                           E173         no  WORD  Internal   ABS    194  private  text         2     0  -
+initBoucle1                           E169         no  WORD  Internal   ABS    187  private  text         1     0  -
+initBoucle2                           E173         no  WORD  Internal   ABS    195  private  text         2     0  -
 
-lt_RTC1_it                            FFE4         no  WORD  Internal   ABS    255  private  data         2     2  -
-lt_IC_it                              FFE6         no  WORD  Internal   ABS    256  private  data         2     2  -
-lt_RTC2_it                            FFF0         no  WORD  Internal   ABS    261  private  data         2     2  -
+lt_RTC1_it                            FFE4         no  WORD  Internal   ABS    261  private  data         2     2  -
+lt_IC_it                              FFE6         no  WORD  Internal   ABS    262  private  data         2     2  -
+lt_RTC2_it                            FFF0         no  WORD  Internal   ABS    267  private  data         2     2  -
 
-main                                  E17D         no  WORD  Internal   ABS    215  private  text        10     0  -
+main                                  E17D         no  WORD  Internal   ABS    216  private  text        11     0  -
 
-n_inc_u                               E137         no  WORD  Internal   ABS    137  private  text        19     0  -
-n_inc_d                               E150         no  WORD  Internal   ABS    159  private  text         1     0  -
+n_inc_u                               E137         no  WORD  Internal   ABS    138  private  text        19     0  -
+n_inc_d                               E150         no  WORD  Internal   ABS    160  private  text         1     0  -
 
 retenue                                 8A         no  BYTE  Internal   ABS     48  private  bss          1     1  -
-reset                                 FFFE         no  WORD  Internal   ABS    268  private  data         2     2  -
+running                                 8B         no  BYTE  Internal   ABS     49  private  bss          1     1  -
+reset                                 FFFE         no  WORD  Internal   ABS    274  private  data         2     2  -
 
-softit                                FFFC         no  WORD  Internal   ABS    267  private  data         2     2  -
+skip_aff                              E197         no  WORD  Internal   ABS    233  private  text         6     0  -
+softit                                FFFC         no  WORD  Internal   ABS    273  private  data         2     2  -
 
-tempo                                 E169         no  WORD  Internal   ABS    185  private  text         1     0  -
+tempo                                 E169         no  WORD  Internal   ABS    186  private  text         1     0  -
 
 valeurUnite                             88         no  BYTE  Internal   ABS     46  private  bss          1     1  -
 valeurDizaine                           89         no  BYTE  Internal   ABS     47  private  bss          1     1  -
 
 
-109 labels
+111 labels
 No errors on assembly of 'e:\TP\c7e2\c7e2.asm'

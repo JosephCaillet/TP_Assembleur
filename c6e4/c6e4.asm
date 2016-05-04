@@ -188,14 +188,14 @@ initBoucle1:
 boucle1:
 	INC X
 	CALL initBoucle2
-	CP X,#200
+	CP X,#193
 	JRNE boucle1
 	RET
 initBoucle2:
 	CLR Y
 boucle2:
 	INC Y
-	CP Y,#200
+	CP Y,#194
 	JRNE boucle2
 	RET
 

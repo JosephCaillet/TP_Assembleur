@@ -1,6 +1,6 @@
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 12:05:18 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 14:43:18 2016
 Page 1  Assembler
-                                               e:\TP\c6e4\mapping.asm
+                                               E:\TP\c6e4\mapping.asm
 
    1                             st7/      
    2                                                              ;-------------------------------
@@ -31,12 +31,12 @@ Page 1  Assembler
   17                                       segment  byte at FFE0-FFFF 'vectit'
   18                             
   19  FFE0                                 END      
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 12:05:18 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 14:43:18 2016
 Page 2  Assembler
-                                               e:\TP\c6e4\mapping.asm
+                                               E:\TP\c6e4\mapping.asm
 
 Symbol Name                       Value     Call       Type  Scope      Rel.  Line  Privacy  Segment   Size  Bytes File
 
 
 0 labels
-No errors on assembly of 'e:\TP\c6e4\mapping.asm'
+No errors on assembly of 'E:\TP\c6e4\mapping.asm'

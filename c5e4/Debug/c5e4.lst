@@ -1,4 +1,4 @@
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:45:55 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 14:37:18 2016
 Page 1  "SQUELET.ASM"
                                                E:\TP\c5e4\c5e4.asm
 
@@ -59,7 +59,7 @@ Page 1  "SQUELET.ASM"
   27  0000                                 EXTERN   LTICR.b       ; Lite Timer Input Capture 
                                                                   ;register
   28                                       
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:45:55 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 14:37:18 2016
 Page 2  "SQUELET.ASM"
                                                E:\TP\c5e4\ST7Lite2.INC
 
@@ -120,7 +120,7 @@ Page 2  "SQUELET.ASM"
   65                             ;*************************************************************
                                  ;*********
   66                             
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:45:55 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 14:37:18 2016
 Page 3  "SQUELET.ASM"
                                                E:\TP\c5e4\ST7Lite2.INC
 
@@ -181,7 +181,7 @@ Page 3  "SQUELET.ASM"
                                  ;*********
  106                             
  107  0000                                 EXTERN   RCCR.b        ; RC oscilator control register
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:45:55 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 14:37:18 2016
 Page 4  "SQUELET.ASM"
                                                E:\TP\c5e4\ST7Lite2.INC
 
@@ -243,7 +243,7 @@ Page 4  "SQUELET.ASM"
   19                             ;*************************************************************
                                  ;***********
   20                             ;
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:45:55 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 14:37:18 2016
 Page 5  "SQUELET.ASM"
                                                E:\TP\c5e4\c5e4.asm
 
@@ -304,7 +304,7 @@ Page 5  "SQUELET.ASM"
   66                             ;*************************************************************
                                  ;***********
   67                             ;
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:45:55 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 14:37:18 2016
 Page 6  "SQUELET.ASM"
                                                E:\TP\c5e4\c5e4.asm
 
@@ -365,7 +365,7 @@ Page 6  "SQUELET.ASM"
  116  E02C   AA1A                          OR       A,#%00011010
  117  E02E   A476                          AND      A,#%01110110
  118  E030   B700                          LD       PADR,A
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:45:55 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 14:37:18 2016
 Page 7  "SQUELET.ASM"
                                                E:\TP\c5e4\c5e4.asm
 
@@ -382,20 +382,20 @@ Page 7  "SQUELET.ASM"
  129                             
  130                             attend_500ms:  
  131                             initBoucle1:  
- 132  E03B   5F                            CLR      X
+ 132  E03B   5F                            CLR      X             ;3
  133                             boucle1:  
- 134  E03C   5C                            INC      X
- 135  E03D   CDE045                        CALL     initBoucle2
- 136  E040   A3C8                          CP       X,#200
- 137  E042   26F8                          JRNE     boucle1
- 138  E044   81                            RET      
+ 134  E03C   5C                            INC      X             ;3
+ 135  E03D   CDE045                        CALL     initBoucle2   ;6
+ 136  E040   A3C1                          CP       X,#193        ;3
+ 137  E042   26F8                          JRNE     boucle1       ;3
+ 138  E044   81                            RET                    ;6
  139                             initBoucle2:  
- 140  E045   905F                          CLR      Y
+ 140  E045   905F                          CLR      Y             ;4
  141                             boucle2:  
- 142  E047   905C                          INC      Y
- 143  E049   90A3C8                        CP       Y,#200
- 144  E04C   26F9                          JRNE     boucle2
- 145  E04E   81                            RET      
+ 142  E047   905C                          INC      Y             ;4
+ 143  E049   90A3C2                        CP       Y,#194        ;3
+ 144  E04C   26F9                          JRNE     boucle2       ;3
+ 145  E04E   81                            RET                    ;6
  146                                       
  147                             ;*************************************************************
                                  ;***********
@@ -426,7 +426,7 @@ Page 7  "SQUELET.ASM"
  169  E05F   CCE053                        JP       boucl
  170                             
  171                             
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:45:55 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 14:37:18 2016
 Page 8  "SQUELET.ASM"
                                                E:\TP\c5e4\c5e4.asm
 
@@ -476,7 +476,7 @@ Page 8  "SQUELET.ASM"
  210                             
  211                             
  212  0000                                 END      
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:45:55 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 14:37:18 2016
 Page 9  "SQUELET.ASM"
                                                E:\TP\c5e4\c5e4.asm
 
@@ -537,7 +537,7 @@ MCCSR                                   38         no  BYTE  Internal   ABS    1
 
 PADR                                    00         no  BYTE  Internal   ABS     11  private  data         0     0  E:\TP\c5e4\ST7Lite2.INC
 PADDR                                   01         no  BYTE  Internal   ABS     12  private  data         0     0  E:\TP\c5e4\ST7Lite2.INC
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:45:55 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 14:37:18 2016
 Page 10  "SQUELET.ASM"
                                                E:\TP\c5e4\c5e4.asm
 

@@ -129,20 +129,20 @@ allume_pair:
 
 attend_500ms:
 initBoucle1:
-	CLR X
+	CLR X;3
 boucle1:
-	INC X
-	CALL initBoucle2
-	CP X,#200
-	JRNE boucle1
-	RET
+	INC X;3
+	CALL initBoucle2;6
+	CP X,#193;3
+	JRNE boucle1;3
+	RET ;6
 initBoucle2:
-	CLR Y
+	CLR Y;4
 boucle2:
-	INC Y
-	CP Y,#200
-	JRNE boucle2
-	RET
+	INC Y;4
+	CP Y,#194;3
+	JRNE boucle2;3
+	RET ;6
 	
 ;************************************************************************
 ;

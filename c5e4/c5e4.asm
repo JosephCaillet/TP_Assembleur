@@ -128,21 +128,22 @@ allume_pair:
 	RET
 
 attend_500ms:
-	CLR	A;3
-boucle:
-	INC A;3
-	NOP ;2*5
-	NOP
-	NOP
-	NOP
-	NOP
-	CP A,#200;4
-	JRNE boucle;3
-	NOP	;2*4
-	NOP
-	NOP
-	NOP
-	RET	;6
+initBoucle1:
+	CLR X
+boucle1:
+	INC X
+	CALL initBoucle2
+	CP X,#200
+	JRNE boucle1
+	RET
+initBoucle2:
+	CLR Y
+boucle2:
+	INC Y
+	CP Y,#200
+	JRNE boucle2
+	RET
+	
 ;************************************************************************
 ;
 ;  FIN DE LA ZONE DE DECLARATION DES SOUS-PROGRAMMES
@@ -162,9 +163,9 @@ main:
 		
 boucl
 	CALL allume_pair
-	;CALL attend_500ms
+	CALL attend_500ms
 	CALL allume_impair
-	;CALL attend_500ms
+	CALL attend_500ms
 	JP	boucl
 
 

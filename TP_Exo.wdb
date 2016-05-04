@@ -2,6 +2,7 @@
 [WorkState_v1_2]
 ptn_Child1=DockState
 ptn_Child2=ToolBarMgr
+ptn_Child3=Frames
 
 [WorkState_v1_2.DockState]
 Bars=25
@@ -856,3 +857,25 @@ ResourceID=0
 ToolTips=True
 CoolLook=True
 LargeButtons=False
+
+[WorkState_v1_2.Frames]
+ptn_Child1=MainFrame
+ptn_Child2=ChildFrames
+
+[WorkState_v1_2.Frames.MainFrame]
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPLHAAAAAAMBAAAAAANHFAAAAAMEDAAAAA
+Title=ST7FLITE20 SofTec Microsystems  ST7 Debugger - TP_Exo.stw* - [Debug] - c7e2.s19 - [c7e2.asm]
+
+[WorkState_v1_2.Frames.ChildFrames]
+ptn_Child1=Document-0
+
+[WorkState_v1_2.Frames.ChildFrames.Document-0]
+ptn_Child1=ViewFrame-0
+
+[WorkState_v1_2.Frames.ChildFrames.Document-0.ViewFrame-0]
+DocPathName=c7e2\c7e2.asm
+DocumentString=
+DocTemplateIndex=0
+WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPMPPPPPPPCOPPPPPPGBAAAAAANBAAAAAADLDAAAAAAIBAAAAA
+IsActiveChildFrame=True
+IsFrameVisible=True

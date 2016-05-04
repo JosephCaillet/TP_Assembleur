@@ -1,4 +1,4 @@
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 16:19:46 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 17:14:18 2016
 Page 1  "c6e4.ASM"
                                                e:\TP\c7e2\c7e2.asm
 
@@ -59,7 +59,7 @@ Page 1  "c6e4.ASM"
   27  0000                                 EXTERN   LTICR.b       ; Lite Timer Input Capture 
                                                                   ;register
   28                                       
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 16:19:46 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 17:14:18 2016
 Page 2  "c6e4.ASM"
                                                e:\TP\c7e2\ST7Lite2.INC
 
@@ -120,7 +120,7 @@ Page 2  "c6e4.ASM"
   65                             ;*************************************************************
                                  ;*********
   66                             
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 16:19:46 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 17:14:18 2016
 Page 3  "c6e4.ASM"
                                                e:\TP\c7e2\ST7Lite2.INC
 
@@ -181,7 +181,7 @@ Page 3  "c6e4.ASM"
                                  ;*********
  106                             
  107  0000                                 EXTERN   RCCR.b        ; RC oscilator control register
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 16:19:46 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 17:14:18 2016
 Page 4  "c6e4.ASM"
                                                e:\TP\c7e2\ST7Lite2.INC
 
@@ -243,7 +243,7 @@ Page 4  "c6e4.ASM"
    4                             ; AUTHOR:               Nicolas Coquelle
    5                             ; DESCRIPTION:          Bibliothèque pour l'utilisation d'un 
                                  ;MAX7219
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 16:19:46 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 17:14:18 2016
 Page 5  "c6e4.ASM"
                                                e:\TP\c7e2\MAX7219.INC
 
@@ -280,7 +280,7 @@ Page 5  "c6e4.ASM"
   25                             ;*************************************************************
                                  ;***********
   26                             
-  27                             
+  27  FFDE                       RCCR0     EQU      $FFDE
   28                             
   29                             ;*************************************************************
                                  ;***********
@@ -305,7 +305,7 @@ Page 5  "c6e4.ASM"
   45                             
   46  0088                       valeurUnite  DS.B     1
   47  0089                       valeurDizaine  DS.B     1
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 16:19:46 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 17:14:18 2016
 Page 6  "c6e4.ASM"
                                                e:\TP\c7e2\c7e2.asm
 
@@ -366,7 +366,7 @@ Page 6  "c6e4.ASM"
   93                                       
   94  E109   B604                          LD       A,PBDDR       ;init PBDDR dire quoi est en 
                                                                   ;push/pull etc
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 16:19:46 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 17:14:18 2016
 Page 7  "c6e4.ASM"
                                                e:\TP\c7e2\c7e2.asm
 
@@ -427,7 +427,7 @@ Page 7  "c6e4.ASM"
  147                             init_chrono:  
  148  E141   3F88                          clr      valeurUnite
  149  E143   3F89                          clr      valeurDizaine
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 16:19:46 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 17:14:18 2016
 Page 8  "c6e4.ASM"
                                                e:\TP\c7e2\c7e2.asm
 
@@ -488,7 +488,7 @@ Page 8  "c6e4.ASM"
  204  E17B   81                            ret      
  205                             
  206                             ;----------------------------------------------------------;
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 16:19:46 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 17:14:18 2016
 Page 9  "c6e4.ASM"
                                                e:\TP\c7e2\c7e2.asm
 
@@ -519,118 +519,126 @@ Page 9  "c6e4.ASM"
  231                             boucle1:  
  232  E195   5C                            INC      X
  233  E196   CDE19E                        CALL     initBoucle2
- 234  E199   A3C1                          CP       X,#193
+ 234  E199   A3B5                          CP       X,#181
  235  E19B   26F8                          JRNE     boucle1
  236  E19D   81                            RET      
  237                             initBoucle2:  
  238  E19E   905F                          CLR      Y
  239                             boucle2:  
  240  E1A0   905C                          INC      Y
- 241  E1A2   90A3C2                        CP       Y,#194
+ 241  E1A2   90A3B5                        CP       Y,#181
  242  E1A5   26F9                          JRNE     boucle2
  243  E1A7   81                            RET      
  244                             
- 245                             ;*************************************************************
-                                 ;***********
- 246                             ;
- 247                             ;  FIN DE LA ZONE DE DECLARATION DES SOUS-PROGRAMMES
- 248                             ;
- 249                             ;*************************************************************
-                                 ;***********
- 250                             
+ 245                             ;---------------------------------------------------------;
+ 246                             
+ 247                             init_oscRC:  
+ 248  E1A8   C6FFDE                        ld       A,RCCR0
+ 249  E1AB   B739                          ld       RCCR,A
+ 250  E1AD   81                            RET      
  251                             
  252                             ;*************************************************************
                                  ;***********
  253                             ;
- 254                             ;  PROGRAMME PRINCIPAL
+ 254                             ;  FIN DE LA ZONE DE DECLARATION DES SOUS-PROGRAMMES
  255                             ;
  256                             ;*************************************************************
                                  ;***********
  257                             
- 258                             main:     
- 259  E1A8   9C                            RSP                    ; Reset Stack Pointer
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 16:19:46 2016
+ 258                             
+ 259                             ;*************************************************************
+                                 ;***********
+ 260                             ;
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 17:14:18 2016
 Page 10  "c6e4.ASM"
                                                e:\TP\c7e2\c7e2.asm
 
- 260  E1A9   CDE116                        call     init_io_ports
- 261  E1AC   CDE12F                        call     init_int_mask
- 262  E1AF   CDE0FD                        call     init_port_spi
- 263  E1B2   CDE148                        call     init_aff
- 264  E1B5   CDE141                        call     init_chrono
- 265                                       
- 266                             boucl     
- 267  E1B8   CDE17C                        call     aff_u
- 268  E1BB   CDE188                        call     aff_d
- 269                                       
- 270  E1BE   B68B                          ld       A,running
- 271  E1C0   A100                          cp       A,#0
- 272  E1C2   2703                          JREQ     skip_aff      
+ 261                             ;  PROGRAMME PRINCIPAL
+ 262                             ;
+ 263                             ;*************************************************************
+                                 ;***********
+ 264                             
+ 265                             main:     
+ 266  E1AE   9C                            RSP                    ; Reset Stack Pointer
+ 267  E1AF   CDE1A8                        call     init_oscRC
+ 268  E1B2   CDE116                        call     init_io_ports
+ 269  E1B5   CDE12F                        call     init_int_mask
+ 270  E1B8   CDE0FD                        call     init_port_spi
+ 271  E1BB   CDE148                        call     init_aff
+ 272  E1BE   CDE141                        call     init_chrono
  273                                       
- 274  E1C4   CDE14F                        call     inc_aff
- 275                             
- 276                             skip_aff:  
- 277  E1C7   CDE194                        call     tempo
- 278                             
- 279  E1CA   CCE1B8                        JP       boucl
- 280                             
- 281                             ;*************************************************************
-                                 ;***********
- 282                             ;
- 283                             ;  ZONE DE DECLARATION DES SOUS-PROGRAMMES D'INTERRUPTION
- 284                             ;
- 285                             ;*************************************************************
-                                 ;***********
+ 274                             boucl     
+ 275  E1C1   CDE17C                        call     aff_u
+ 276  E1C4   CDE188                        call     aff_d
+ 277                                       
+ 278  E1C7   B68B                          ld       A,running
+ 279  E1C9   A100                          cp       A,#0
+ 280  E1CB   2703                          JREQ     skip_aff      
+ 281                                       
+ 282  E1CD   CDE14F                        call     inc_aff
+ 283                             
+ 284                             skip_aff:  
+ 285  E1D0   CDE194                        call     tempo
  286                             
- 287                             
- 288  E1CD   80                  dummy_rt:  IRET                   ; Procédure vide : retour au 
-                                                                  ;programme principal.
- 289                             
- 290                             int_marche:  
- 291  E1CE   A601                          ld       a,#1
- 292  E1D0   B78B                          ld       running,a
- 293  E1D2   80                            iret     
+ 287  E1D3   CCE1C1                        JP       boucl
+ 288                             
+ 289                             ;*************************************************************
+                                 ;***********
+ 290                             ;
+ 291                             ;  ZONE DE DECLARATION DES SOUS-PROGRAMMES D'INTERRUPTION
+ 292                             ;
+ 293                             ;*************************************************************
+                                 ;***********
  294                             
- 295                             int_arret:  
- 296  E1D3   3F8B                          clr      running
- 297  E1D5   80                            iret     
- 298                             
- 299                             ;*************************************************************
+ 295                             
+ 296  E1D6   80                  dummy_rt:  IRET                   ; Procédure vide : retour au 
+                                                                  ;programme principal.
+ 297                             
+ 298                             int_marche:  
+ 299  E1D7   A601                          ld       a,#1
+ 300  E1D9   B78B                          ld       running,a
+ 301  E1DB   80                            iret     
+ 302                             
+ 303                             int_arret:  
+ 304  E1DC   3F8B                          clr      running
+ 305  E1DE   80                            iret     
+ 306                             
+ 307                             ;*************************************************************
                                  ;***********
- 300                             ;
- 301                             ;  ZONE DE DECLARATION DES VECTEURS D'INTERRUPTION
- 302                             ;
- 303                             ;*************************************************************
+ 308                             ;
+ 309                             ;  ZONE DE DECLARATION DES VECTEURS D'INTERRUPTION
+ 310                             ;
+ 311                             ;*************************************************************
                                  ;***********
- 304                             
- 305                             
- 306                                       segment  'vectit'
- 307                             
- 308                             
- 309  FFE0   E1CD                          DC.W     dummy_rt      ; Adresse FFE0-FFE1h
- 310  FFE2   E1CD                SPI_it    DC.W     dummy_rt      ; Adresse FFE2-FFE3h
- 311  FFE4   E1CD                lt_RTC1_it  DC.W     dummy_rt      ; Adresse FFE4-FFE5h
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 16:19:46 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 17:14:18 2016
 Page 11  "c6e4.ASM"
                                                e:\TP\c7e2\c7e2.asm
 
- 312  FFE6   E1CD                lt_IC_it  DC.W     dummy_rt      ; Adresse FFE6-FFE7h
- 313  FFE8   E1CD                at_timerover_it  DC.W     dummy_rt      ; Adresse FFE8-FFE9h
- 314  FFEA   E1CD                at_timerOC_it  DC.W     dummy_rt      ; Adresse FFEA-FFEBh
- 315  FFEC   E1CD                AVD_it    DC.W     dummy_rt      ; Adresse FFEC-FFEDh
- 316  FFEE   E1CD                          DC.W     dummy_rt      ; Adresse FFEE-FFEFh
- 317  FFF0   E1CD                lt_RTC2_it  DC.W     dummy_rt      ; Adresse FFF0-FFF1h
- 318  FFF2   E1D3                ext3_it   DC.W     int_arret     ; Adresse FFF2-FFF3h
- 319  FFF4   E1CD                ext2_it   DC.W     dummy_rt      ; Adresse FFF4-FFF5h
- 320  FFF6   E1CD                ext1_it   DC.W     dummy_rt      ; Adresse FFF6-FFF7h
- 321  FFF8   E1CE                ext0_it   DC.W     int_marche    ; Adresse FFF8-FFF9h
- 322  FFFA   E1CD                AWU_it    DC.W     dummy_rt      ; Adresse FFFA-FFFBh
- 323  FFFC   E1CD                softit    DC.W     dummy_rt      ; Adresse FFFC-FFFDh
- 324  FFFE   E1A8                reset     DC.W     main          ; Adresse FFFE-FFFFh
- 325                             
- 326                             
- 327  0000                                 END      
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 16:19:46 2016
+ 312                             
+ 313                             
+ 314                                       segment  'vectit'
+ 315                             
+ 316                             
+ 317  FFE0   E1D6                          DC.W     dummy_rt      ; Adresse FFE0-FFE1h
+ 318  FFE2   E1D6                SPI_it    DC.W     dummy_rt      ; Adresse FFE2-FFE3h
+ 319  FFE4   E1D6                lt_RTC1_it  DC.W     dummy_rt      ; Adresse FFE4-FFE5h
+ 320  FFE6   E1D6                lt_IC_it  DC.W     dummy_rt      ; Adresse FFE6-FFE7h
+ 321  FFE8   E1D6                at_timerover_it  DC.W     dummy_rt      ; Adresse FFE8-FFE9h
+ 322  FFEA   E1D6                at_timerOC_it  DC.W     dummy_rt      ; Adresse FFEA-FFEBh
+ 323  FFEC   E1D6                AVD_it    DC.W     dummy_rt      ; Adresse FFEC-FFEDh
+ 324  FFEE   E1D6                          DC.W     dummy_rt      ; Adresse FFEE-FFEFh
+ 325  FFF0   E1D6                lt_RTC2_it  DC.W     dummy_rt      ; Adresse FFF0-FFF1h
+ 326  FFF2   E1DC                ext3_it   DC.W     int_arret     ; Adresse FFF2-FFF3h
+ 327  FFF4   E1D6                ext2_it   DC.W     dummy_rt      ; Adresse FFF4-FFF5h
+ 328  FFF6   E1D6                ext1_it   DC.W     dummy_rt      ; Adresse FFF6-FFF7h
+ 329  FFF8   E1D7                ext0_it   DC.W     int_marche    ; Adresse FFF8-FFF9h
+ 330  FFFA   E1D6                AWU_it    DC.W     dummy_rt      ; Adresse FFFA-FFFBh
+ 331  FFFC   E1D6                softit    DC.W     dummy_rt      ; Adresse FFFC-FFFDh
+ 332  FFFE   E1AE                reset     DC.W     main          ; Adresse FFFE-FFFFh
+ 333                             
+ 334                             
+ 335  0000                                 END      
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 17:14:18 2016
 Page 12  "c6e4.ASM"
                                                e:\TP\c7e2\c7e2.asm
 
@@ -646,8 +654,8 @@ ADCDRH                                  35         no  BYTE  Internal   ABS     
 ADCDRL                                  36         no  BYTE  Internal   ABS     89  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
 AWUPR                                   49         no  BYTE  Internal   ABS    131  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
 AWUCSR                                  4A         no  BYTE  Internal   ABS    132  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
-AVD_it                                FFEC         no  WORD  Internal   ABS    315  private  data         4     2  -
-AWU_it                                FFFA         no  WORD  Internal   ABS    322  private  data         2     2  -
+AVD_it                                FFEC         no  WORD  Internal   ABS    323  private  data         4     2  -
+AWU_it                                FFFA         no  WORD  Internal   ABS    330  private  data         2     2  -
 
 BREAKCR                                 22         no  BYTE  Internal   ABS     54  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
 
@@ -691,7 +699,7 @@ LTICR                                   0C         no  BYTE  Internal   ABS     
 
 MCCSR                                   38         no  BYTE  Internal   ABS    101  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
 MAX7219_Init                          E010         no  WORD  Internal   ABS      9  private  data         0     0  e:\TP\c7e2\MAX7219.INC
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 16:19:46 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 17:14:18 2016
 Page 13  "c6e4.ASM"
                                                e:\TP\c7e2\c7e2.asm
 
@@ -718,13 +726,14 @@ PWM2CSR                                 15         no  BYTE  Internal   ABS     
 PWM3CSR                                 16         no  BYTE  Internal   ABS     42  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
 
 RCCR                                    39         no  BYTE  Internal   ABS    107  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
+RCCR0                                 FFDE         no  WORD  Internal   ABS     27  private  data         0     0  -
 
 SPIDR                                   31         no  BYTE  Internal   ABS     79  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
 SPICR                                   32         no  BYTE  Internal   ABS     80  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
 SPISR                                   33         no  BYTE  Internal   ABS     81  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
 SICSR                                   3A         no  BYTE  Internal   ABS    108  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
 SetBrightness_Bright                    80         no  BYTE  Internal   ABS     14  private  data         0     0  e:\TP\c7e2\MAX7219.INC
-SPI_it                                FFE2         no  WORD  Internal   ABS    310  private  data         2     2  -
+SPI_it                                FFE2         no  WORD  Internal   ABS    318  private  data         2     2  -
 
 TRANCR                                  21         no  BYTE  Internal   ABS     53  private  data         0     0  e:\TP\c7e2\ST7Lite2.INC
 
@@ -732,52 +741,53 @@ WDGCR                                   2E         no  BYTE  Internal   ABS     
 
 aff_u                                 E17C         no  WORD  Internal   ABS    208  private  text        12     0  -
 aff_d                                 E188         no  WORD  Internal   ABS    218  private  text        12     0  -
-at_timerover_it                       FFE8         no  WORD  Internal   ABS    313  private  data         2     2  -
-at_timerOC_it                         FFEA         no  WORD  Internal   ABS    314  private  data         2     2  -
+at_timerover_it                       FFE8         no  WORD  Internal   ABS    321  private  data         2     2  -
+at_timerOC_it                         FFEA         no  WORD  Internal   ABS    322  private  data         2     2  -
 
 boucle1                               E195         no  WORD  Internal   ABS    231  private  text         9     0  -
 boucle2                               E1A0         no  WORD  Internal   ABS    239  private  text         8     0  -
-boucl                                 E1B8         no  WORD  Internal   ABS    266  private  text        15     0  -
+boucl                                 E1C1         no  WORD  Internal   ABS    274  private  text        15     0  -
 
-dummy_rt                              E1CD         no  WORD  Internal   ABS    288  private  text         1     0  -
+dummy_rt                              E1D6         no  WORD  Internal   ABS    296  private  text         1     0  -
 
-ext3_it                               FFF2         no  WORD  Internal   ABS    318  private  data         2     2  -
-ext2_it                               FFF4         no  WORD  Internal   ABS    319  private  data         2     2  -
-ext1_it                               FFF6         no  WORD  Internal   ABS    320  private  data         2     2  -
-ext0_it                               FFF8         no  WORD  Internal   ABS    321  private  data         2     2  -
+ext3_it                               FFF2         no  WORD  Internal   ABS    326  private  data         2     2  -
+ext2_it                               FFF4         no  WORD  Internal   ABS    327  private  data         2     2  -
+ext1_it                               FFF6         no  WORD  Internal   ABS    328  private  data         2     2  -
+ext0_it                               FFF8         no  WORD  Internal   ABS    329  private  data         2     2  -
 
 init_port_spi                         E0FD         no  WORD  Internal   ABS     86  private  text        25     0  -
 init_io_ports                         E116         no  WORD  Internal   ABS    105  private  text        25     0  -
 init_int_mask                         E12F         no  WORD  Internal   ABS    130  private  text        18     0  -
 init_chrono                           E141         no  WORD  Internal   ABS    147  private  text         7     0  -
 init_aff                              E148         no  WORD  Internal   ABS    155  private  text         7     0  -
-inc_aff                               E14F         no  WORD  Internal   ABS    162  private  text        16     0  -
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 16:19:46 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 17:14:18 2016
 Page 14  "c6e4.ASM"
                                                e:\TP\c7e2\c7e2.asm
 
+inc_aff                               E14F         no  WORD  Internal   ABS    162  private  text        16     0  -
 inc_u                                 E15F         no  WORD  Internal   ABS    175  private  text         3     0  -
 inc_d                                 E175         no  WORD  Internal   ABS    196  private  text         6     0  -
 initBoucle1                           E194         no  WORD  Internal   ABS    229  private  text         1     0  -
 initBoucle2                           E19E         no  WORD  Internal   ABS    237  private  text         2     0  -
-int_marche                            E1CE         no  WORD  Internal   ABS    290  private  text         5     0  -
-int_arret                             E1D3         no  WORD  Internal   ABS    295  private  text         3     0  -
+init_oscRC                            E1A8         no  WORD  Internal   ABS    247  private  text         6     0  -
+int_marche                            E1D7         no  WORD  Internal   ABS    298  private  text         5     0  -
+int_arret                             E1DC         no  WORD  Internal   ABS    303  private  text         3     0  -
 
-lt_RTC1_it                            FFE4         no  WORD  Internal   ABS    311  private  data         2     2  -
-lt_IC_it                              FFE6         no  WORD  Internal   ABS    312  private  data         2     2  -
-lt_RTC2_it                            FFF0         no  WORD  Internal   ABS    317  private  data         2     2  -
+lt_RTC1_it                            FFE4         no  WORD  Internal   ABS    319  private  data         2     2  -
+lt_IC_it                              FFE6         no  WORD  Internal   ABS    320  private  data         2     2  -
+lt_RTC2_it                            FFF0         no  WORD  Internal   ABS    325  private  data         2     2  -
 
-main                                  E1A8         no  WORD  Internal   ABS    258  private  text        16     0  -
+main                                  E1AE         no  WORD  Internal   ABS    265  private  text        19     0  -
 
 n_inc_u                               E162         no  WORD  Internal   ABS    180  private  text        19     0  -
 n_inc_d                               E17B         no  WORD  Internal   ABS    202  private  text         1     0  -
 
 retenue                                 8A         no  BYTE  Internal   ABS     48  private  bss          1     1  -
 running                                 8B         no  BYTE  Internal   ABS     49  private  bss          1     1  -
-reset                                 FFFE         no  WORD  Internal   ABS    324  private  data         2     2  -
+reset                                 FFFE         no  WORD  Internal   ABS    332  private  data         2     2  -
 
-skip_aff                              E1C7         no  WORD  Internal   ABS    276  private  text         6     0  -
-softit                                FFFC         no  WORD  Internal   ABS    323  private  data         2     2  -
+skip_aff                              E1D0         no  WORD  Internal   ABS    284  private  text         6     0  -
+softit                                FFFC         no  WORD  Internal   ABS    331  private  data         2     2  -
 
 tempo                                 E194         no  WORD  Internal   ABS    228  private  text         1     0  -
 
@@ -785,5 +795,5 @@ valeurUnite                             88         no  BYTE  Internal   ABS     
 valeurDizaine                           89         no  BYTE  Internal   ABS     47  private  bss          1     1  -
 
 
-115 labels
+117 labels
 No errors on assembly of 'e:\TP\c7e2\c7e2.asm'

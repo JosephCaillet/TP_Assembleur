@@ -24,7 +24,7 @@ ST7/
 ;
 ;************************************************************************
 
-
+RCCR0 EQU $FFDE
 
 ;************************************************************************
 ;
@@ -231,15 +231,22 @@ initBoucle1:
 boucle1:
 	INC X
 	CALL initBoucle2
-	CP X,#193
+	CP X,#181
 	JRNE boucle1
 	RET
 initBoucle2:
 	CLR Y
 boucle2:
 	INC Y
-	CP Y,#194
+	CP Y,#181
 	JRNE boucle2
+	RET
+
+;---------------------------------------------------------;
+
+init_oscRC:
+	ld A,RCCR0
+	ld RCCR,A
 	RET
 
 ;************************************************************************
@@ -257,6 +264,7 @@ boucle2:
 
 main:
 	RSP			; Reset Stack Pointer
+	call	init_oscRC
 	call	init_io_ports
 	call	init_int_mask
 	call	init_port_spi

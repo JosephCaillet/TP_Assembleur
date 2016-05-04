@@ -146,12 +146,13 @@ n_inc_u
 	jrne inc_d
 		;--- then{ ---
 	clr valeurDizaine
-	jp n_inc_u
+	clr retenue
+	jp n_inc_d
 		;--- }end_then ---
 		;--- else{ ---
 inc_d
 	add a,retenue
-	ld valeurUnite, a
+	ld valeurDizaine, a
 		;--- }end_else ---
 	clr retenue
 	;-- }end_then ---
@@ -172,7 +173,7 @@ aff_u:
 ;----------------------------------------------------------;
 
 aff_d:
-	ld a,#4
+	ld a,#3
 	ld DisplayChar_Digit,a
 	ld a, valeurDizaine
 	ld DisplayChar_Character,a
@@ -216,6 +217,7 @@ main:
 	
 	call init_port_spi
 	call init_aff
+	call init_chrono
 		
 boucl
 	call aff_u

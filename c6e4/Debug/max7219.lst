@@ -1,6 +1,6 @@
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:50:36 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 12:05:19 2016
 Page 1  "MAX7219.ASM"
-                                               C:\TP_ST7\tp\c6e4\max7219.asm
+                                               e:\TP\c6e4\max7219.asm
 
    1                             ST7/      
    2                             
@@ -59,9 +59,9 @@ Page 1  "MAX7219.ASM"
   25  0000                                 EXTERN   LTCNTR.b      ; Lite Timer Counter register
   26  0000                                 EXTERN   LTCSR1.b      ; Lite Timer Control/Status 
                                                                   ;register 1
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:50:36 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 12:05:19 2016
 Page 2  "MAX7219.ASM"
-                                               C:\TP_ST7\tp\c6e4\ST7Lite2.INC
+                                               e:\TP\c6e4\ST7Lite2.INC
 
   27  0000                                 EXTERN   LTICR.b       ; Lite Timer Input Capture 
                                                                   ;register
@@ -120,9 +120,9 @@ Page 2  "MAX7219.ASM"
   63                             ;*************************************************************
                                  ;*********
   64                             ;		Flash Register
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:50:36 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 12:05:19 2016
 Page 3  "MAX7219.ASM"
-                                               C:\TP_ST7\tp\c6e4\ST7Lite2.INC
+                                               e:\TP\c6e4\ST7Lite2.INC
 
   65                             ;*************************************************************
                                  ;*********
@@ -181,9 +181,9 @@ Page 3  "MAX7219.ASM"
                                  ;*********
  104                             ;		Clock & Reset Registers
  105                             ;*************************************************************
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:50:36 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 12:05:19 2016
 Page 4  "MAX7219.ASM"
-                                               C:\TP_ST7\tp\c6e4\ST7Lite2.INC
+                                               e:\TP\c6e4\ST7Lite2.INC
 
                                  ;*********
  106                             
@@ -243,9 +243,9 @@ Page 4  "MAX7219.ASM"
                                  ;***********
   18                             ;			Déclaration des fonctions et variables publiques
   19                             ;*************************************************************
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:50:36 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 12:05:19 2016
 Page 5  "MAX7219.ASM"
-                                               C:\TP_ST7\tp\c6e4\max7219.asm
+                                               e:\TP\c6e4\max7219.asm
 
                                  ;***********
   20                                       
@@ -304,9 +304,9 @@ Page 5  "MAX7219.ASM"
   71                             MAX7219_Init:  
   72  E010   88                            push     A
   73                                       
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:50:36 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 12:05:19 2016
 Page 6  "MAX7219.ASM"
-                                               C:\TP_ST7\tp\c6e4\max7219.asm
+                                               e:\TP\c6e4\max7219.asm
 
   74  E011   A60B                          ld       A,#REG_SCAN_LIMIT
   75  E013   B783                          ld       Write_RegNumber,A
@@ -365,9 +365,9 @@ Page 6  "MAX7219.ASM"
  128                             
  129  E056   A60F                          ld       A,#REG_DISPLAY_TEST
  130  E058   B783                          ld       Write_RegNumber,A
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:50:36 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 12:05:19 2016
 Page 7  "MAX7219.ASM"
-                                               C:\TP_ST7\tp\c6e4\max7219.asm
+                                               e:\TP\c6e4\max7219.asm
 
  131  E05A   A601                          ld       A,#1
  132  E05C   B784                          ld       Write_Data,A
@@ -426,9 +426,9 @@ Page 7  "MAX7219.ASM"
  185  E092   88                            push     A
  186                                       
  187  E093   B681                          ld       A,DisplayChar_Digit
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:50:36 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 12:05:19 2016
 Page 8  "MAX7219.ASM"
-                                               C:\TP_ST7\tp\c6e4\max7219.asm
+                                               e:\TP\c6e4\max7219.asm
 
  188  E095   B783                          ld       Write_RegNumber,A
  189                                       
@@ -487,9 +487,9 @@ Page 8  "MAX7219.ASM"
  242  E0CA   A3FF                          cp       X,#$FF
  243  E0CC   2709                          jreq     finDisp
  244                                       
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:50:36 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 12:05:19 2016
 Page 9  "MAX7219.ASM"
-                                               C:\TP_ST7\tp\c6e4\max7219.asm
+                                               e:\TP\c6e4\max7219.asm
 
  245  E0CE   A310                          cp       X,#16
  246  E0D0   2405                          jruge    finDisp
@@ -539,73 +539,73 @@ Page 9  "MAX7219.ASM"
  287                             
  288                             
  289  E0FD                                 END      
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:50:36 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 12:05:19 2016
 Page 10  "MAX7219.ASM"
-                                               C:\TP_ST7\tp\c6e4\max7219.asm
+                                               e:\TP\c6e4\max7219.asm
 
 Symbol Name                       Value     Call       Type  Scope      Rel.  Line  Privacy  Segment   Size  Bytes File
 
-ATCSR                                   0D         no  BYTE  Internal   ABS     33  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-ATRH                                    10         no  BYTE  Internal   ABS     36  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-ATRL                                    11         no  BYTE  Internal   ABS     37  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-ATICRH                                  1F         no  BYTE  Internal   ABS     51  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-ATICRL                                  20         no  BYTE  Internal   ABS     52  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-ADCCSR                                  34         no  BYTE  Internal   ABS     87  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-ADCDRH                                  35         no  BYTE  Internal   ABS     88  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-ADCDRL                                  36         no  BYTE  Internal   ABS     89  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-AWUPR                                   49         no  BYTE  Internal   ABS    131  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-AWUCSR                                  4A         no  BYTE  Internal   ABS    132  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
+ATCSR                                   0D         no  BYTE  Internal   ABS     33  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+ATRH                                    10         no  BYTE  Internal   ABS     36  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+ATRL                                    11         no  BYTE  Internal   ABS     37  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+ATICRH                                  1F         no  BYTE  Internal   ABS     51  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+ATICRL                                  20         no  BYTE  Internal   ABS     52  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+ADCCSR                                  34         no  BYTE  Internal   ABS     87  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+ADCDRH                                  35         no  BYTE  Internal   ABS     88  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+ADCDRL                                  36         no  BYTE  Internal   ABS     89  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+AWUPR                                   49         no  BYTE  Internal   ABS    131  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+AWUCSR                                  4A         no  BYTE  Internal   ABS    132  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
 
-BREAKCR                                 22         no  BYTE  Internal   ABS     54  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
+BREAKCR                                 22         no  BYTE  Internal   ABS     54  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
 
-CNTRH                                   0E         no  BYTE  Internal   ABS     34  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-CNTRL                                   0F         no  BYTE  Internal   ABS     35  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
+CNTRH                                   0E         no  BYTE  Internal   ABS     34  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+CNTRL                                   0F         no  BYTE  Internal   ABS     35  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
 
-DCR0H                                   17         no  BYTE  Internal   ABS     43  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-DCR0L                                   18         no  BYTE  Internal   ABS     44  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-DCR1H                                   19         no  BYTE  Internal   ABS     45  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-DCR1L                                   1A         no  BYTE  Internal   ABS     46  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-DCR2H                                   1B         no  BYTE  Internal   ABS     47  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-DCR2L                                   1C         no  BYTE  Internal   ABS     48  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-DCR3H                                   1D         no  BYTE  Internal   ABS     49  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-DCR3L                                   1E         no  BYTE  Internal   ABS     50  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-DCMCLK                                  40         no  BYTE  Internal   ABS    120  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-DCMFA                                   41         no  BYTE  Internal   ABS    121  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-DCMFD                                   42         no  BYTE  Internal   ABS    122  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-DCMBD                                   43         no  BYTE  Internal   ABS    123  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-DCMCR                                   44         no  BYTE  Internal   ABS    124  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-DCMCSR                                  45         no  BYTE  Internal   ABS    125  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-DMCR                                    4B         no  BYTE  Internal   ABS    138  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-DMSR                                    4C         no  BYTE  Internal   ABS    139  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-DMBK1H                                  4D         no  BYTE  Internal   ABS    140  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-DMBK1L                                  4E         no  BYTE  Internal   ABS    141  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-DMBK2H                                  4F         no  BYTE  Internal   ABS    142  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-DMBK2L                                  50         no  BYTE  Internal   ABS    143  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
+DCR0H                                   17         no  BYTE  Internal   ABS     43  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+DCR0L                                   18         no  BYTE  Internal   ABS     44  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+DCR1H                                   19         no  BYTE  Internal   ABS     45  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+DCR1L                                   1A         no  BYTE  Internal   ABS     46  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+DCR2H                                   1B         no  BYTE  Internal   ABS     47  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+DCR2L                                   1C         no  BYTE  Internal   ABS     48  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+DCR3H                                   1D         no  BYTE  Internal   ABS     49  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+DCR3L                                   1E         no  BYTE  Internal   ABS     50  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+DCMCLK                                  40         no  BYTE  Internal   ABS    120  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+DCMFA                                   41         no  BYTE  Internal   ABS    121  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+DCMFD                                   42         no  BYTE  Internal   ABS    122  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+DCMBD                                   43         no  BYTE  Internal   ABS    123  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+DCMCR                                   44         no  BYTE  Internal   ABS    124  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+DCMCSR                                  45         no  BYTE  Internal   ABS    125  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+DMCR                                    4B         no  BYTE  Internal   ABS    138  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+DMSR                                    4C         no  BYTE  Internal   ABS    139  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+DMBK1H                                  4D         no  BYTE  Internal   ABS    140  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+DMBK1L                                  4E         no  BYTE  Internal   ABS    141  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+DMBK2H                                  4F         no  BYTE  Internal   ABS    142  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+DMBK2L                                  50         no  BYTE  Internal   ABS    143  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
 DisplayChar_Digit                       81         no  BYTE  Internal   ABS     50  public   bss          1     1  -
 DisplayChar_Character                   82         no  BYTE  Internal   ABS     51  public   bss          1     1  -
 
-EECSR                                   30         no  BYTE  Internal   ABS     73  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-EICR                                    37         no  BYTE  Internal   ABS     95  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-EISR                                    3C         no  BYTE  Internal   ABS    114  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
+EECSR                                   30         no  BYTE  Internal   ABS     73  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+EICR                                    37         no  BYTE  Internal   ABS     95  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+EISR                                    3C         no  BYTE  Internal   ABS    114  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
 
-FCSR                                    2F         no  BYTE  Internal   ABS     67  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
+FCSR                                    2F         no  BYTE  Internal   ABS     67  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
 
 INTENSITY_MIN                         0000         no  WORD  Internal   ABS     40  private  textdata     0     0  -
 INTENSITY_MAX                         000F         no  WORD  Internal   ABS     41  private  textdata     0     0  -
 
-LTCSR2                                  08         no  BYTE  Internal   ABS     23  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-LTCARR                                  09         no  BYTE  Internal   ABS     24  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-LTCNTR                                  0A         no  BYTE  Internal   ABS     25  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-LTCSR1                                  0B         no  BYTE  Internal   ABS     26  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-LTICR                                   0C         no  BYTE  Internal   ABS     27  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
+LTCSR2                                  08         no  BYTE  Internal   ABS     23  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+LTCARR                                  09         no  BYTE  Internal   ABS     24  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+LTCNTR                                  0A         no  BYTE  Internal   ABS     25  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+LTCSR1                                  0B         no  BYTE  Internal   ABS     26  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+LTICR                                   0C         no  BYTE  Internal   ABS     27  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
 LookupCode_Character                    85         no  BYTE  Internal   ABS     56  private  bss          1     1  -
 LookupCode_CodeOut                      86         no  BYTE  Internal   ABS     57  private  bss          1     1  -
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:50:36 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 12:05:19 2016
 Page 11  "MAX7219.ASM"
-                                               C:\TP_ST7\tp\c6e4\max7219.asm
+                                               e:\TP\c6e4\max7219.asm
 
 
-MCCSR                                   38         no  BYTE  Internal   ABS    101  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
+MCCSR                                   38         no  BYTE  Internal   ABS    101  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
 MAX7219_Init                          E010         no  WORD  Internal   ABS     71  public   textdata    41     0  -
 MAX7219_ShutdownStart                 E039         no  WORD  Internal   ABS    100  public   textdata    14     0  -
 MAX7219_ShutdownStop                  E047         no  WORD  Internal   ABS    113  public   textdata    14     0  -
@@ -621,35 +621,35 @@ MAX7219_LookupCode                    E0C3         no  WORD  Internal   ABS    2
 MAX7219_Write                         E0DA         no  WORD  Internal   ABS    256  private  textdata    23     0  -
 MAX7219_SendByte                      E0F1         no  WORD  Internal   ABS    276  private  textdata     5     0  -
 
-PADR                                    00         no  BYTE  Internal   ABS     11  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-PADDR                                   01         no  BYTE  Internal   ABS     12  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-PAOR                                    02         no  BYTE  Internal   ABS     13  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-PBDR                                    03         no  BYTE  Internal   ABS     15  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-PBDDR                                   04         no  BYTE  Internal   ABS     16  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-PBOR                                    05         no  BYTE  Internal   ABS     17  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-PWMCR                                   12         no  BYTE  Internal   ABS     38  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-PWM0CSR                                 13         no  BYTE  Internal   ABS     39  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-PWM1CSR                                 14         no  BYTE  Internal   ABS     40  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-PWM2CSR                                 15         no  BYTE  Internal   ABS     41  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-PWM3CSR                                 16         no  BYTE  Internal   ABS     42  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
+PADR                                    00         no  BYTE  Internal   ABS     11  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+PADDR                                   01         no  BYTE  Internal   ABS     12  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+PAOR                                    02         no  BYTE  Internal   ABS     13  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+PBDR                                    03         no  BYTE  Internal   ABS     15  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+PBDDR                                   04         no  BYTE  Internal   ABS     16  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+PBOR                                    05         no  BYTE  Internal   ABS     17  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+PWMCR                                   12         no  BYTE  Internal   ABS     38  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+PWM0CSR                                 13         no  BYTE  Internal   ABS     39  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+PWM1CSR                                 14         no  BYTE  Internal   ABS     40  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+PWM2CSR                                 15         no  BYTE  Internal   ABS     41  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+PWM3CSR                                 16         no  BYTE  Internal   ABS     42  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
 
-RCCR                                    39         no  BYTE  Internal   ABS    107  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
+RCCR                                    39         no  BYTE  Internal   ABS    107  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
 REG_DECODE                            0009         no  WORD  Internal   ABS     34  private  textdata     0     0  -
 REG_INTENSITY                         000A         no  WORD  Internal   ABS     35  private  textdata     0     0  -
 REG_SCAN_LIMIT                        000B         no  WORD  Internal   ABS     36  private  textdata     0     0  -
 REG_SHUTDOWN                          000C         no  WORD  Internal   ABS     37  private  textdata     0     0  -
 REG_DISPLAY_TEST                      000F         no  WORD  Internal   ABS     38  private  textdata     0     0  -
 
-SPIDR                                   31         no  BYTE  Internal   ABS     79  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-SPICR                                   32         no  BYTE  Internal   ABS     80  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-SPISR                                   33         no  BYTE  Internal   ABS     81  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
-SICSR                                   3A         no  BYTE  Internal   ABS    108  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
+SPIDR                                   31         no  BYTE  Internal   ABS     79  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+SPICR                                   32         no  BYTE  Internal   ABS     80  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+SPISR                                   33         no  BYTE  Internal   ABS     81  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
+SICSR                                   3A         no  BYTE  Internal   ABS    108  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
 SetBrightness_Bright                    80         no  BYTE  Internal   ABS     48  public   bss          1     1  -
 SendByte_Data                           87         no  BYTE  Internal   ABS     59  private  bss          1     1  -
 
-TRANCR                                  21         no  BYTE  Internal   ABS     53  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
+TRANCR                                  21         no  BYTE  Internal   ABS     53  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
 
-WDGCR                                   2E         no  BYTE  Internal   ABS     60  private  textdata     0     0  C:\TP_ST7\tp\c6e4\ST7Lite2.INC
+WDGCR                                   2E         no  BYTE  Internal   ABS     60  private  textdata     0     0  e:\TP\c6e4\ST7Lite2.INC
 Write_RegNumber                         83         no  BYTE  Internal   ABS     53  private  bss          1     1  -
 Write_Data                              84         no  BYTE  Internal   ABS     54  private  bss          1     1  -
 
@@ -661,4 +661,4 @@ wait                                  E0F6         no  WORD  Internal   ABS    2
 
 
 93 labels
-No errors on assembly of 'C:\TP_ST7\tp\c6e4\max7219.asm'
+No errors on assembly of 'e:\TP\c6e4\max7219.asm'

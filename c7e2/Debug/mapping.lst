@@ -1,4 +1,4 @@
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 16:19:46 2016
 Page 1  Assembler
                                                e:\TP\c7e2\mapping.asm
 
@@ -31,7 +31,7 @@ Page 1  Assembler
   17                                       segment  byte at FFE0-FFFF 'vectit'
   18                             
   19  FFE0                                 END      
-STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 15:58:39 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 16:19:46 2016
 Page 2  Assembler
                                                e:\TP\c7e2\mapping.asm
 

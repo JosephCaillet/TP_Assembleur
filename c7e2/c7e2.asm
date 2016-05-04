@@ -257,7 +257,8 @@ boucle2:
 
 main:
 	RSP			; Reset Stack Pointer
-	RIM
+	call	init_io_ports
+	call	init_int_mask
 	call	init_port_spi
 	call	init_aff
 	call	init_chrono

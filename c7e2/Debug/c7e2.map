@@ -5,8 +5,8 @@ Segment List
 e:\TP\c7e2\max7219.asm[1]   46-   63        80 -       87                 'ram0'  [void]
 e:\TP\c7e2\c7e2.asm[1]   38-   60        88 -       8B                 'ram0'  [void]
 e:\TP\c7e2\max7219.asm[2]   64-  288      E000 -     E0FC                 'rom'  [textdata]
-e:\TP\c7e2\c7e2.asm[2]   61-  255      E0FD -     E19D                 'rom'  [text]
-e:\TP\c7e2\c7e2.asm[3]  256-  276      FFE0 -     FFFF                 'vectit'  [data]
+e:\TP\c7e2\c7e2.asm[2]   61-  305      E0FD -     E1D5                 'rom'  [text]
+e:\TP\c7e2\c7e2.asm[3]  306-  326      FFE0 -     FFFF                 'vectit'  [data]
 e:\TP\c7e2\st7lite2.asm[1]   24-  177         0 -       50                 'periph'  [void]
 
 
@@ -15,7 +15,7 @@ Class List
 
 0 '        ram0'   byte from       80 to       8B (lim      17F) =  4% D
 0 '       stack'   byte from      180 to      17F (lim      1FF) =  0% V
-0 '         rom'   byte from     E000 to     E19D (lim     FFDF) =  5% CS
+0 '         rom'   byte from     E000 to     E1D5 (lim     FFDF) =  5% CS
 0 '      vectit'   byte from     FFE0 to     FFFF (lim     FFFF) =100% S
 0 '      periph'   byte from        0 to       50 (lim       7F) = 62% D
 

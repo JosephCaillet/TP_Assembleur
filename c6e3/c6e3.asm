@@ -83,8 +83,10 @@ valeurAffiche DS.B 1
 init_port_spi:
 	ld a,#$0C
 	ld SPICR,a
-	ld a,#$5C
+	ld a,#$03
 	ld SPISR,a
+	ld a,#$5C
+	ld SPICR,a
 	
 	LD	A,PBDDR;init PBDDR dire quoi est en push/pull etc
 	OR	A,#%00000100
@@ -114,11 +116,12 @@ main:
 	call init_port_spi
 	ld a,#5
 	ld valeurAffiche,a
-	
+
+test
 	call MAX7219_Init
 	call MAX7219_Clear
-	ld a,#4 ;Si ne s'affiche pas au bon endroit, commenter cette ligne et décommenter la suivante
-	;ld a,#1
+	;ld a,#4 ;Si ne s'affiche pas au bon endroit, commenter cette ligne et décommenter la suivante
+	ld a,#4
 	ld DisplayChar_Digit,a
 	ld a, valeurAffiche
 	ld DisplayChar_Character,a

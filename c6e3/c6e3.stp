@@ -87,14 +87,15 @@ String.100.0=asm -sym $(InputFile) $(ToolsetIncOpts) -li=$(OutputPath)$(InputNam
 [Root.Config.0.Settings.4]
 String.2.0=Running Pre-Link step
 String.6.0=2016,5,4,8,43,26
+String.8.0=
 
 [Root.Config.0.Settings.5]
 String.2.0=Running ST7 linker
 String.3.0=lyn $(ObjectFiles), $(OutputPath)$(TargetSName).cod, " " 
 String.3.1=obsend $(OutputPath)$(TargetSName).cod,f,$(OutputPath)$(TargetSName).s19,s
-String.4.0=
+String.4.0=$(OutputPath)$(TargetFName)
 String.5.0=$(OutputPath)$(TargetSName).map $(OutputPath)$(TargetSName).cod $(OutputPath)$(TargetSName).grp $(OutputPath)$(TargetSName).sym
-String.6.0=2016,5,4,8,43,26
+String.6.0=2016,5,4,11,7,34
 String.100.0=ram0:0x80-0x17f
 String.100.1=stack:0x180-0x1ff
 String.100.2=rom:0xe000-0xffdf
@@ -176,7 +177,7 @@ String.6.0=2016,5,4,8,43,26
 [Root.Source Files]
 ElemType=Folder
 PathName=Source Files
-Child=Root.Source Files.st7lite2.asm
+Child=Root.Source Files.mapping.asm
 Next=Root.Include Files
 Config.0=Root.Source Files.Config.0
 Config.1=Root.Source Files.Config.1
@@ -227,14 +228,14 @@ String.100.0=asm -sym $(InputFile) $(ToolsetIncOpts) -li=$(OutputPath)$(InputNam
 String.2.0=Performing Custom Build on $(InputFile)
 String.6.0=2016,5,4,8,43,26
 
-[Root.Source Files.st7lite2.asm]
-ElemType=File
-PathName=st7lite2.asm
-Next=Root.Source Files.mapping.asm
-
 [Root.Source Files.mapping.asm]
 ElemType=File
 PathName=mapping.asm
+Next=Root.Source Files.st7lite2.asm
+
+[Root.Source Files.st7lite2.asm]
+ElemType=File
+PathName=st7lite2.asm
 Next=Root.Source Files.max7219.inc
 
 [Root.Source Files.max7219.inc]

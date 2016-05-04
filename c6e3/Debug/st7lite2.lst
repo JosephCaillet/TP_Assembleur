@@ -1,0 +1,384 @@
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:17:54 2016
+Page 1  Assembler
+                                               e:\TP\c6e3\st7lite2.asm
+
+   1                             st7/      
+   2                             
+   3                             ;*************************************************************
+                                 ;*********** 
+   4                             ; TITLE:                ST7FLite2.ASM
+   5                             ; AUTHOR:               CMG Microcontroller Application Team
+   6                             ; DESCRIPTION:          ST7FLite2 Registers and memory mapping
+                                 ; 
+   7                             ;
+   8                             ; Define here the micro ROM Size according to the sales type:
+   9                             ;
+  10  0000                                 #define  ST7FLite20   1     ;=> no Data EEPROM
+  11                             ; #define ST7FLite25   1   ;=> no Data EEPROM
+  12                             ; #define ST7FLite29    1   ;=> Data EEPROM
+  13                             ;    
+  14                             ;*************************************************************
+                                 ;***********
+  15                             
+  16                             
+  17                             ;+------------------------------------------------------------
+                                 ;------------------+
+  18                             ;|	HARDAWRE REGISTERS							|
+  19                             ;+------------------------------------------------------------
+                                 ;------------------+
+  20                                       
+  21  0000                                 BYTES                  ; following addresses are 8 bit 
+                                                                  ;length
+  22                             
+  23                             ;*************************************************************
+                                 ;*******
+  24                                       segment  byte at 0-7F 'periph'
+  25                             ;*************************************************************
+                                 ;*******
+  26                             
+  27                             ;*************************************************************
+                                 ;*********
+  28                             ;		I/O Ports Registers
+  29                             ;*************************************************************
+                                 ;*********
+  30                             
+  31  0000                       .PADR     DS.B     1             ; port A data register
+  32  0001                       .PADDR    DS.B     1             ; port A data direction 
+                                                                  ;register
+  33  0002                       .PAOR     DS.B     1             ; port A option register
+  34                             
+  35  0003                       .PBDR     DS.B     1             ; port B data register
+  36  0004                       .PBDDR    DS.B     1             ; port B data direction 
+                                                                  ;register
+  37  0005                       .PBOR     DS.B     1             ; port B option register
+  38                             
+  39                             reserved0  
+  40  0006                                 DS.B     2             ; unused
+  41                             
+  42                             ;*************************************************************
+                                 ;*********
+  43                             ;		Lite Timer Registers
+  44                             ;*************************************************************
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:17:54 2016
+Page 2  Assembler
+                                               e:\TP\c6e3\st7lite2.asm
+
+                                 ;*********
+  45                                       
+  46  0008                       .LTCSR2   DS.B     1             ; lite timer control/status 
+                                                                  ;register 2
+  47  0009                       .LTCARR   DS.B     1             ; lite timer auto reload 
+                                                                  ;register
+  48  000A                       .LTCNTR   DS.B     1             ; lite timer counter register
+  49  000B                       .LTCSR1   DS.B     1             ; lite timer control/status 
+                                                                  ;register 1
+  50  000C                       .LTICR    DS.B     1             ; lite timer input capture 
+                                                                  ;register
+  51                             
+  52                             ;*************************************************************
+                                 ;*********
+  53                             ;		Auto reload timer registers
+  54                             ;*************************************************************
+                                 ;*********
+  55                             
+  56  000D                       .ATCSR    DS.B     1             ; Timer Control/Status register 
+                                                                  ;1
+  57  000E                       .CNTRH    DS.B     1             ; Counter Register High
+  58  000F                       .CNTRL    DS.B     1             ; Counter Register Low 
+  59  0010                       .ATRH     DS.B     1             ; Auto-Reload Register High
+  60  0011                       .ATRL     DS.B     1             ; Auto-Reload Register Low
+  61  0012                       .PWMCR    DS.B     1             ; PWM Output Control Register
+  62  0013                       .PWM0CSR  DS.B     1             ; PWM 0 Control/Status Register 
+                                                                  ; 
+  63  0014                       .PWM1CSR  DS.B     1             ; PWM 1 Control/Status Register 
+                                                                  ; 
+  64  0015                       .PWM2CSR  DS.B     1             ; PWM 2 Control/Status Register 
+                                                                  ; 
+  65  0016                       .PWM3CSR  DS.B     1             ; PWM 3 Control/Status Register 
+                                                                  ; 
+  66  0017                       .DCR0H    DS.B     1             ; PWM 0 Duty Cycle Register 
+                                                                  ;High
+  67  0018                       .DCR0L    DS.B     1             ; PWM 0 Duty Cycle Register Low 
+                                                                  ;  
+  68  0019                       .DCR1H    DS.B     1             ; PWM 1 Duty Cycle Register 
+                                                                  ;High
+  69  001A                       .DCR1L    DS.B     1             ; PWM 1 Duty Cycle Register Low 
+                                                                  ;  
+  70  001B                       .DCR2H    DS.B     1             ; PWM 2 Duty Cycle Register 
+                                                                  ;High
+  71  001C                       .DCR2L    DS.B     1             ; PWM 2 Duty Cycle Register Low 
+                                                                  ;  
+  72  001D                       .DCR3H    DS.B     1             ; PWM 3 Duty Cycle Register 
+                                                                  ;High
+  73  001E                       .DCR3L    DS.B     1             ; PWM 3 Duty Cycle Register Low 
+                                                                  ;  
+  74  001F                       .ATICRH   DS.B     1             ; Input Capture Register High 
+  75  0020                       .ATICRL   DS.B     1             ; Input Capture Register Low
+  76  0021                       .TRANCR   DS.B     1             ; Transfer Control Register
+  77  0022                       .BREAKCR  DS.B     1             ; Break Control Register  
+  78                             
+  79                             reserved1  
+  80  0023                                 DS.B     11            ;  unused
+  81                                       
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:17:54 2016
+Page 3  Assembler
+                                               e:\TP\c6e3\st7lite2.asm
+
+  82                             ;*************************************************************
+                                 ;*********
+  83                             ;                        Watchdog Control  register					
+  84                             ;*************************************************************
+                                 ;*********
+  85                                       
+  86  002E                       .WDGCR    DS.B     1             ; Watchdog Control Register 
+  87                             
+  88                             ;*************************************************************
+                                 ;*********
+  89                             ;		Flash Register
+  90                             ;*************************************************************
+                                 ;*********
+  91                             
+  92  002F                       .FCSR     DS.B     1             ; flash control/satus register
+  93                             
+  94                             ;*************************************************************
+                                 ;*********
+  95                             ;		EEPROM Register
+  96                             ;*************************************************************
+                                 ;*********
+  97                             
+  98  0030                       .EECSR    DS.B     1             ; data EEPROM control status 
+                                                                  ;register
+  99                                       
+ 100                             ;*************************************************************
+                                 ;*********
+ 101                             ;		SPI Registers
+ 102                             ;*************************************************************
+                                 ;*********
+ 103                             
+ 104  0031                       .SPIDR    DS.B     1             ; SPI data I/O register
+ 105  0032                       .SPICR    DS.B     1             ; SPI control register
+ 106  0033                       .SPISR    DS.B     1             ; SPI status register
+ 107                             
+ 108                             ;*************************************************************
+                                 ;*********
+ 109                             ;		ADC Registers
+ 110                             ;*************************************************************
+                                 ;*********
+ 111                                       
+ 112  0034                       .ADCCSR   DS.B     1             ; A/D control/status register
+ 113  0035                       .ADCDRH   DS.B     1             ; ADC Data register
+ 114  0036                       .ADCDRL   DS.B     1             ; ADC Amplifier Control register
+                                                                  ; and Data Low Register
+ 115                             
+ 116                             ;*************************************************************
+                                 ;*********
+ 117                             ;		ITC Registers
+ 118                             ;*************************************************************
+                                 ;*********
+ 119                                       
+ 120  0037                       .EICR     DS.B     1             ; external interrupt control 
+                                                                  ;register
+ 121                             
+ 122                             ;*************************************************************
+                                 ;*********
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:17:54 2016
+Page 4  Assembler
+                                               e:\TP\c6e3\st7lite2.asm
+
+ 123                             ;		MCC Registers
+ 124                             ;*************************************************************
+                                 ;*********
+ 125                             
+ 126  0038                       .MCCSR    DS.B     1             ; main clock control/status 
+                                                                  ;register
+ 127                                       
+ 128                             ;*************************************************************
+                                 ;*********
+ 129                             ;		Clock & Reset Registers
+ 130                             ;*************************************************************
+                                 ;*********
+ 131                             
+ 132  0039                       .RCCR     DS.B     1             ; RC oscilator control register
+ 133  003A                       .SICSR    DS.B     1             ; system integrity 
+                                                                  ;control/status register
+ 134                             
+ 135                             reserved2  
+ 136  003B                                 DS.B     1             ;  unused
+ 137                             
+ 138  003C                       .EISR     DS.B     1             ;  External Interrupt Selection 
+                                                                  ;Register
+ 139                             
+ 140                             reserved3  
+ 141  003D                                 DS.B     3             ; 3 bytes unused	3Dh to 3Fh
+ 142                             
+ 143                             ;*************************************************************
+                                 ;*********
+ 144                             ;                        Dali Registers	
+ 145                             ;*************************************************************
+                                 ;*********
+ 146                             
+ 147  0040                       .DCMCLK   DS.B     1             ; DALI Clock Register
+ 148  0041                       .DCMFA    DS.B     1             ; DALI Forward Address Register
+ 149  0042                       .DCMFD    DS.B     1             ; DALI Forward Data Register
+ 150  0043                       .DCMBD    DS.B     1             ; DALI Backward Data Register
+ 151  0044                       .DCMCR    DS.B     1             ; DALI Control Register
+ 152  0045                       .DCMCSR   DS.B     1             ; DALI Control/Status Register
+ 153                             
+ 154                             reserved4  
+ 155  0046                                 DS.B     3             ; 3 bytes unused	46h to 48h
+ 156                             
+ 157                             ;*************************************************************
+                                 ;*********
+ 158                             ;                        AWU Registers	
+ 159                             ;*************************************************************
+                                 ;*********
+ 160                             
+ 161  0049                       .AWUPR    DS.B     1             ; AWU Prescaler Register
+ 162  004A                       .AWUCSR   DS.B     1             ; AWU Control/Status Register
+ 163                             
+ 164                             ;*************************************************************
+                                 ;*********
+ 165                             ;                        DM Registers	
+ 166                             ;*************************************************************
+                                 ;*********
+ 167                             
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:17:54 2016
+Page 5  Assembler
+                                               e:\TP\c6e3\st7lite2.asm
+
+ 168  004B                       .DMCR     DS.B     1             ; DM Control Register
+ 169  004C                       .DMSR     DS.B     1             ; DM Status Register
+ 170  004D                       .DMBK1H   DS.B     1             ; DM Breakpoint Register 1 High
+ 171  004E                       .DMBK1L   DS.B     1             ; DM Breakpoint Register 1 Low
+ 172  004F                       .DMBK2H   DS.B     1             ; DM Breakpoint Register 2 High
+ 173  0050                       .DMBK2L   DS.B     1             ; DM Breakpoint Register 2 Low
+ 174                             
+ 175                             
+ 176                             
+ 177                             ;*************************************************************
+                                 ;*********
+ 178                                       segment  byte at 80-17F 'ram0'   ;Zero Page
+ 179                             ;*************************************************************
+                                 ;*********
+ 180                             
+ 181  0080                                 WORDS                  ; following addresses are 16 bit
+                                                                  ; length
+ 182                             
+ 183                             ;*************************************************************
+                                 ;*********
+ 184                                       segment  byte at 180-1FF 'stack'
+ 185                             ;*************************************************************
+                                 ;*********
+ 186                             
+ 187                             ;*************************************************************
+                                 ;*********
+ 188  0180 U                               #ifdef   ST7FLite29 
+ 191                             ;*************************************************************
+                                 ;*********
+ 192                             
+ 193                             ;*************************************************************
+                                 ;********* 
+ 194                                       segment  byte at E000-FFDF 'rom'                 
+ 195                             ;*************************************************************
+                                 ;*********
+ 196                             
+ 197                             ;*************************************************************
+                                 ;*********
+ 198                                       segment  byte at FFE0-FFFF 'vectit'
+ 199                             ;*************************************************************
+                                 ;*********
+ 200                             
+ 201  FFE0                                 end      
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:17:54 2016
+Page 6  Assembler
+                                               e:\TP\c6e3\st7lite2.asm
+
+Symbol Name                       Value     Call       Type  Scope      Rel.  Line  Privacy  Segment   Size  Bytes File
+
+ATCSR                                   0D         no  BYTE  Internal   ABS     56  public   bss          1     1  -
+ATRH                                    10         no  BYTE  Internal   ABS     59  public   bss          1     1  -
+ATRL                                    11         no  BYTE  Internal   ABS     60  public   bss          1     1  -
+ATICRH                                  1F         no  BYTE  Internal   ABS     74  public   bss          1     1  -
+ATICRL                                  20         no  BYTE  Internal   ABS     75  public   bss          1     1  -
+ADCCSR                                  34         no  BYTE  Internal   ABS    112  public   bss          1     1  -
+ADCDRH                                  35         no  BYTE  Internal   ABS    113  public   bss          1     1  -
+ADCDRL                                  36         no  BYTE  Internal   ABS    114  public   bss          1     1  -
+AWUPR                                   49         no  BYTE  Internal   ABS    161  public   bss          1     1  -
+AWUCSR                                  4A         no  BYTE  Internal   ABS    162  public   bss          1     1  -
+
+BREAKCR                                 22         no  BYTE  Internal   ABS     77  public   bss          1     1  -
+
+CNTRH                                   0E         no  BYTE  Internal   ABS     57  public   bss          1     1  -
+CNTRL                                   0F         no  BYTE  Internal   ABS     58  public   bss          1     1  -
+
+DCR0H                                   17         no  BYTE  Internal   ABS     66  public   bss          1     1  -
+DCR0L                                   18         no  BYTE  Internal   ABS     67  public   bss          1     1  -
+DCR1H                                   19         no  BYTE  Internal   ABS     68  public   bss          1     1  -
+DCR1L                                   1A         no  BYTE  Internal   ABS     69  public   bss          1     1  -
+DCR2H                                   1B         no  BYTE  Internal   ABS     70  public   bss          1     1  -
+DCR2L                                   1C         no  BYTE  Internal   ABS     71  public   bss          1     1  -
+DCR3H                                   1D         no  BYTE  Internal   ABS     72  public   bss          1     1  -
+DCR3L                                   1E         no  BYTE  Internal   ABS     73  public   bss          1     1  -
+DCMCLK                                  40         no  BYTE  Internal   ABS    147  public   bss          1     1  -
+DCMFA                                   41         no  BYTE  Internal   ABS    148  public   bss          1     1  -
+DCMFD                                   42         no  BYTE  Internal   ABS    149  public   bss          1     1  -
+DCMBD                                   43         no  BYTE  Internal   ABS    150  public   bss          1     1  -
+DCMCR                                   44         no  BYTE  Internal   ABS    151  public   bss          1     1  -
+DCMCSR                                  45         no  BYTE  Internal   ABS    152  public   bss          1     1  -
+DMCR                                    4B         no  BYTE  Internal   ABS    168  public   bss          1     1  -
+DMSR                                    4C         no  BYTE  Internal   ABS    169  public   bss          1     1  -
+DMBK1H                                  4D         no  BYTE  Internal   ABS    170  public   bss          1     1  -
+DMBK1L                                  4E         no  BYTE  Internal   ABS    171  public   bss          1     1  -
+DMBK2H                                  4F         no  BYTE  Internal   ABS    172  public   bss          1     1  -
+DMBK2L                                  50         no  BYTE  Internal   ABS    173  public   bss          1     1  -
+
+EECSR                                   30         no  BYTE  Internal   ABS     98  public   bss          1     1  -
+EICR                                    37         no  BYTE  Internal   ABS    120  public   bss          1     1  -
+EISR                                    3C         no  BYTE  Internal   ABS    138  public   bss          1     1  -
+
+FCSR                                    2F         no  BYTE  Internal   ABS     92  public   bss          1     1  -
+
+LTCSR2                                  08         no  BYTE  Internal   ABS     46  public   bss          1     1  -
+LTCARR                                  09         no  BYTE  Internal   ABS     47  public   bss          1     1  -
+LTCNTR                                  0A         no  BYTE  Internal   ABS     48  public   bss          1     1  -
+LTCSR1                                  0B         no  BYTE  Internal   ABS     49  public   bss          1     1  -
+LTICR                                   0C         no  BYTE  Internal   ABS     50  public   bss          1     1  -
+
+MCCSR                                   38         no  BYTE  Internal   ABS    126  public   bss          1     1  -
+
+PADR                                    00         no  BYTE  Internal   ABS     31  public   bss          1     1  -
+PADDR                                   01         no  BYTE  Internal   ABS     32  public   bss          1     1  -
+PAOR                                    02         no  BYTE  Internal   ABS     33  public   bss          1     1  -
+PBDR                                    03         no  BYTE  Internal   ABS     35  public   bss          1     1  -
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:17:54 2016
+Page 7  Assembler
+                                               e:\TP\c6e3\st7lite2.asm
+
+PBDDR                                   04         no  BYTE  Internal   ABS     36  public   bss          1     1  -
+PBOR                                    05         no  BYTE  Internal   ABS     37  public   bss          1     1  -
+PWMCR                                   12         no  BYTE  Internal   ABS     61  public   bss          1     1  -
+PWM0CSR                                 13         no  BYTE  Internal   ABS     62  public   bss          1     1  -
+PWM1CSR                                 14         no  BYTE  Internal   ABS     63  public   bss          1     1  -
+PWM2CSR                                 15         no  BYTE  Internal   ABS     64  public   bss          1     1  -
+PWM3CSR                                 16         no  BYTE  Internal   ABS     65  public   bss          1     1  -
+
+RCCR                                    39         no  BYTE  Internal   ABS    132  public   bss          1     1  -
+
+SPIDR                                   31         no  BYTE  Internal   ABS    104  public   bss          1     1  -
+SPICR                                   32         no  BYTE  Internal   ABS    105  public   bss          1     1  -
+SPISR                                   33         no  BYTE  Internal   ABS    106  public   bss          1     1  -
+SICSR                                   3A         no  BYTE  Internal   ABS    133  public   bss          1     1  -
+
+TRANCR                                  21         no  BYTE  Internal   ABS     76  public   bss          1     1  -
+
+WDGCR                                   2E         no  BYTE  Internal   ABS     86  public   bss          1     1  -
+
+reserved0                               06         no  BYTE  Internal   ABS     39  private  bss          2     1  -
+reserved1                               23         no  BYTE  Internal   ABS     79  private  bss         11     1  -
+reserved2                               3B         no  BYTE  Internal   ABS    135  private  bss          1     1  -
+reserved3                               3D         no  BYTE  Internal   ABS    140  private  bss          3     1  -
+reserved4                               46         no  BYTE  Internal   ABS    154  private  bss          3     1  -
+
+
+66 labels
+No errors on assembly of 'e:\TP\c6e3\st7lite2.asm'

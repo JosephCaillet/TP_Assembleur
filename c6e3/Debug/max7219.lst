@@ -1,0 +1,664 @@
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:17:54 2016
+Page 1  "MAX7219.ASM"
+                                               e:\TP\c6e3\max7219.asm
+
+   1                             ST7/      
+   2                             
+   3                             ;*************************************************************
+                                 ;***********
+   4                             ; TITLE:                MAX7219.ASM
+   5                             ; AUTHOR:               Nicolas Coquelle
+   6                             ; DESCRIPTION:          Bibliothèque pour l'utilisation d'un 
+                                 ;MAX7219
+   7                             ;                       pour l'affichage sur des afficheurs 7 
+                                 ;segments
+   8                             ;*************************************************************
+                                 ;***********
+   9                             
+  10  0000                                 TITLE    "MAX7219.ASM"
+  11                                       
+  12  0000                                 MOTOROLA 
+  13                                       
+   0  0000                                 #include "ST7Lite2.INC"
+   1                             ;*************************************************************
+                                 ;*********** 
+   2                             ; TITLE:                ST7FLite2.INC
+   3                             ; AUTHOR:               CMG Microcontroller Application Team
+   4                             ; DESCRIPTION:          ST7FLite2 Register and memory mapping 
+                                 ;
+   5                             ;*************************************************************
+                                 ;***********;*************************************************
+                                 ;********************
+   6                             
+   7                             ;*************************************************************
+                                 ;*********
+   8                             ;		I/O Ports Registers
+   9                             ;*************************************************************
+                                 ;*********
+  10                             
+  11  0000                                 EXTERN   PADR.b        ; port A data register
+  12  0000                                 EXTERN   PADDR.b       ; port A data direction 
+                                                                  ;register
+  13  0000                                 EXTERN   PAOR.b        ; port A option register
+  14                             
+  15  0000                                 EXTERN   PBDR.b        ; port B data register
+  16  0000                                 EXTERN   PBDDR.b       ; port B data direction 
+                                                                  ;register
+  17  0000                                 EXTERN   PBOR.b        ; port B option register
+  18                             
+  19                             ;*************************************************************
+                                 ;*********
+  20                             ;		Lite Timer Registers
+  21                             ;*************************************************************
+                                 ;*********
+  22                                       
+  23  0000                                 EXTERN   LTCSR2.b      ; Lite Timer Control/Status 
+                                                                  ;register 2
+  24  0000                                 EXTERN   LTCARR.b      ; Lite Timer Auto-reload 
+                                                                  ;register
+  25  0000                                 EXTERN   LTCNTR.b      ; Lite Timer Counter register
+  26  0000                                 EXTERN   LTCSR1.b      ; Lite Timer Control/Status 
+                                                                  ;register 1
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:17:54 2016
+Page 2  "MAX7219.ASM"
+                                               e:\TP\c6e3\ST7Lite2.INC
+
+  27  0000                                 EXTERN   LTICR.b       ; Lite Timer Input Capture 
+                                                                  ;register
+  28                                       
+  29                             ;*************************************************************
+                                 ;*********
+  30                             ;		Auto reload timer registers
+  31                             ;*************************************************************
+                                 ;*********
+  32                             
+  33  0000                                 EXTERN   ATCSR.b       ; Timer Control/Status register 
+                                                                  ;1
+  34  0000                                 EXTERN   CNTRH.b       ; Counter Register High
+  35  0000                                 EXTERN   CNTRL.b       ; Counter Register Low 
+  36  0000                                 EXTERN   ATRH.b        ; Auto-Reload Register High
+  37  0000                                 EXTERN   ATRL.b        ; Auto-Reload Register Low
+  38  0000                                 EXTERN   PWMCR.b       ; PWM Output Control Register
+  39  0000                                 EXTERN   PWM0CSR.b     ; PWM 0 Control/Status Register 
+                                                                  ; 
+  40  0000                                 EXTERN   PWM1CSR.b     ; PWM 1 Control/Status Register 
+                                                                  ; 
+  41  0000                                 EXTERN   PWM2CSR.b     ; PWM 2 Control/Status Register 
+                                                                  ; 
+  42  0000                                 EXTERN   PWM3CSR.b     ; PWM 3 Control/Status Register 
+                                                                  ; 
+  43  0000                                 EXTERN   DCR0H.b       ; PWM 0 Duty Cycle Register 
+                                                                  ;High
+  44  0000                                 EXTERN   DCR0L.b       ; PWM 0 Duty Cycle Register Low 
+                                                                  ;  
+  45  0000                                 EXTERN   DCR1H.b       ; PWM 0 Duty Cycle Register 
+                                                                  ;High
+  46  0000                                 EXTERN   DCR1L.b       ; PWM 0 Duty Cycle Register Low 
+                                                                  ;  
+  47  0000                                 EXTERN   DCR2H.b       ; PWM 0 Duty Cycle Register 
+                                                                  ;High
+  48  0000                                 EXTERN   DCR2L.b       ; PWM 0 Duty Cycle Register Low 
+                                                                  ;  
+  49  0000                                 EXTERN   DCR3H.b       ; PWM 0 Duty Cycle Register 
+                                                                  ;High
+  50  0000                                 EXTERN   DCR3L.b       ; PWM 0 Duty Cycle Register Low 
+                                                                  ;  
+  51  0000                                 EXTERN   ATICRH.b      ; Input Capture Register High 
+  52  0000                                 EXTERN   ATICRL.b      ; Input Capture Register Low
+  53  0000                                 EXTERN   TRANCR.b      ; Transfer Control Register
+  54  0000                                 EXTERN   BREAKCR.b     ; Break Control Register  
+  55                             
+  56                             ;*************************************************************
+                                 ;*********
+  57                             ;                        Watchdog Control  register
+  58                             ;*************************************************************
+                                 ;*********
+  59                                       
+  60  0000                                 EXTERN   WDGCR.b       ; Watchdog Control Register 
+  61                             
+  62                             
+  63                             ;*************************************************************
+                                 ;*********
+  64                             ;		Flash Register
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:17:54 2016
+Page 3  "MAX7219.ASM"
+                                               e:\TP\c6e3\ST7Lite2.INC
+
+  65                             ;*************************************************************
+                                 ;*********
+  66                             
+  67  0000                                 EXTERN   FCSR.b        ; flash control/satus register
+  68                             
+  69                             ;*************************************************************
+                                 ;*********
+  70                             ;		EEPROM Register
+  71                             ;*************************************************************
+                                 ;*********
+  72                             
+  73  0000                                 EXTERN   EECSR.b       ; data EEPROM control status 
+                                                                  ;register
+  74                             
+  75                             ;*************************************************************
+                                 ;*********
+  76                             ;		SPI Registers
+  77                             ;*************************************************************
+                                 ;*********
+  78                             
+  79  0000                                 EXTERN   SPIDR.b       ; SPI data I/O register
+  80  0000                                 EXTERN   SPICR.b       ; SPI control register
+  81  0000                                 EXTERN   SPISR.b       ; SPI status register
+  82                             
+  83                             ;*************************************************************
+                                 ;*********
+  84                             ;		ADC Registers
+  85                             ;*************************************************************
+                                 ;*********
+  86                                       
+  87  0000                                 EXTERN   ADCCSR.b      ; ADC Control Status register
+  88  0000                                 EXTERN   ADCDRH.b      ; ADC Data register
+  89  0000                                 EXTERN   ADCDRL.b      ; ADC Amplifier Control 
+                                                                  ;register
+  90                                       
+  91                             ;*************************************************************
+                                 ;*********
+  92                             ;		ITC Registers
+  93                             ;*************************************************************
+                                 ;*********
+  94                                       
+  95  0000                                 EXTERN   EICR.b        ; external interrupt control 
+                                                                  ;register
+  96                             
+  97                             ;*************************************************************
+                                 ;*********
+  98                             ;		MCC egisters
+  99                             ;*************************************************************
+                                 ;*********
+ 100                             
+ 101  0000                                 EXTERN   MCCSR.b       ; main clock control/status 
+                                                                  ;register
+ 102                                       
+ 103                             ;*************************************************************
+                                 ;*********
+ 104                             ;		Clock & Reset Registers
+ 105                             ;*************************************************************
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:17:54 2016
+Page 4  "MAX7219.ASM"
+                                               e:\TP\c6e3\ST7Lite2.INC
+
+                                 ;*********
+ 106                             
+ 107  0000                                 EXTERN   RCCR.b        ; RC oscilator control register
+ 108  0000                                 EXTERN   SICSR.b       ; system integrity 
+                                                                  ;control/status register
+ 109                             
+ 110                             ;*************************************************************
+                                 ;*********
+ 111                             ;                        External Interrupt Selection 
+                                 ;Registers
+ 112                             ;*************************************************************
+                                 ;*********
+ 113                             
+ 114  0000                                 EXTERN   EISR.b        ;  External Interrupt Selection 
+                                                                  ;Register
+ 115                             
+ 116                             ;*************************************************************
+                                 ;*********
+ 117                             ;                        Dali Registers
+ 118                             ;*************************************************************
+                                 ;*********
+ 119                             
+ 120  0000                                 EXTERN   DCMCLK.b      ; DALI Clock Register
+ 121  0000                                 EXTERN   DCMFA.b       ; DALI Forward Address Register
+ 122  0000                                 EXTERN   DCMFD.b       ; DALI Forward Data Register
+ 123  0000                                 EXTERN   DCMBD.b       ; DALI Backward Data Register
+ 124  0000                                 EXTERN   DCMCR.b       ; DALI Control Register
+ 125  0000                                 EXTERN   DCMCSR.b      ; DALI Control/Status Register
+ 126                             
+ 127                             ;*************************************************************
+                                 ;*********
+ 128                             ;                        AWU Registers
+ 129                             ;*************************************************************
+                                 ;*********
+ 130                             
+ 131  0000                                 EXTERN   AWUPR.b       ; AWU Prescaler Register
+ 132  0000                                 EXTERN   AWUCSR.b      ; AWU Control/Status Register
+ 133                             
+ 134                             ;*************************************************************
+                                 ;*********
+ 135                             ;                        DM Registers
+ 136                             ;*************************************************************
+                                 ;*********
+ 137                             
+ 138  0000                                 EXTERN   DMCR.b        ; DM Control Register
+ 139  0000                                 EXTERN   DMSR.b        ; DM Status Register
+ 140  0000                                 EXTERN   DMBK1H.b      ; DM Breakpoint Register 1 High
+ 141  0000                                 EXTERN   DMBK1L.b      ; DM Breakpoint Register 1 Low
+ 142  0000                                 EXTERN   DMBK2H.b      ; DM Breakpoint Register 2 High
+ 143  0000                                 EXTERN   DMBK2L.b      ; DM Breakpoint Register 2 Low
+ 144                             
+<END_OF_INCLUSION>
+  15                                       
+  16                             
+  17                             ;*************************************************************
+                                 ;***********
+  18                             ;			Déclaration des fonctions et variables publiques
+  19                             ;*************************************************************
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:17:54 2016
+Page 5  "MAX7219.ASM"
+                                               e:\TP\c6e3\max7219.asm
+
+                                 ;***********
+  20                                       
+  21  0000                                 PUBLIC   MAX7219_Init
+  22  0000                                 PUBLIC   MAX7219_ShutdownStart
+  23  0000                                 PUBLIC   MAX7219_ShutdownStop
+  24  0000                                 PUBLIC   MAX7219_DisplayTestStart
+  25  0000                                 PUBLIC   MAX7219_DisplayTestStop
+  26  0000                                 PUBLIC   MAX7219_SetBrightness, SetBrightness_Bright
+  27  0000                                 PUBLIC   MAX7219_Clear
+  28  0000                                 PUBLIC   MAX7219_AllumePoint
+  29  0000                                 PUBLIC   MAX7219_AfficheP
+  30  0000                                 PUBLIC   MAX7219_DisplayChar, DisplayChar_Digit, DisplayChar_Character
+  31                             
+  32                             
+  33                             
+  34  0009                       REG_DECODE  EQU      $09
+  35  000A                       REG_INTENSITY  EQU      $0A
+  36  000B                       REG_SCAN_LIMIT  EQU      $0B
+  37  000C                       REG_SHUTDOWN  EQU      $0C
+  38  000F                       REG_DISPLAY_TEST  EQU      $0F
+  39                             
+  40  0000                       INTENSITY_MIN  EQU      $00
+  41  000F                       INTENSITY_MAX  EQU      $0F
+  42                             
+  43                                       
+  44  0000                                 BYTES    
+  45                                       
+  46                                       segment  byte 'ram0'
+  47                                       
+  48  0080                       SetBrightness_Bright  DS.B     1
+  49                             
+  50  0081                       DisplayChar_Digit  DS.B     1
+  51  0082                       DisplayChar_Character  DS.B     1
+  52                             
+  53  0083                       Write_RegNumber  DS.B     1
+  54  0084                       Write_Data  DS.B     1
+  55                             
+  56  0085                       LookupCode_Character  DS.B     1
+  57  0086                       LookupCode_CodeOut  DS.B     1
+  58                             
+  59  0087                       SendByte_Data  DS.B     1
+  60                                       
+  61                                       
+  62  0088                                 WORDS    
+  63                             
+  64                                       segment  byte 'rom'
+  65                             
+  66                                                              ;0   1   2   3   4   5   6   7  
+                                                                  ; 8   9   A   B   C   D   E   F
+  67  E000   7E306D79335B5F70    
+  67  E008   7F7B771F4E3D4F47    MAX7219_ConvCode  DC.B     $7E,$30,$6D,$79,$33,$5B,$5F,$70,$7F,$7B,$77,$1F,$4E,$3D,$4F,$47
+  68                             
+  69                             
+  70                             
+  71                             MAX7219_Init:  
+  72  E010   88                            push     A
+  73                                       
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:17:54 2016
+Page 6  "MAX7219.ASM"
+                                               e:\TP\c6e3\max7219.asm
+
+  74  E011   A60B                          ld       A,#REG_SCAN_LIMIT
+  75  E013   B783                          ld       Write_RegNumber,A
+  76  E015   A607                          ld       A,#7
+  77  E017   B784                          ld       Write_Data,A
+  78  E019   CDE0DA                        call     MAX7219_Write
+  79                             
+  80  E01C   A609                          ld       A,#REG_DECODE
+  81  E01E   B783                          ld       Write_RegNumber,A
+  82  E020   A600                          ld       A,#$00
+  83  E022   B784                          ld       Write_Data,A
+  84  E024   CDE0DA                        call     MAX7219_Write
+  85                             
+  86  E027   CDE047                        call     MAX7219_ShutdownStop
+  87                             
+  88  E02A   CDE063                        call     MAX7219_DisplayTestStop
+  89                             
+  90  E02D   CDE081                        call     MAX7219_Clear
+  91                             
+  92  E030   A60F                          ld       A,#INTENSITY_MAX
+  93  E032   B780                          ld       SetBrightness_Bright,A
+  94  E034   CDE071                        call     MAX7219_SetBrightness
+  95                             
+  96  E037   84                            pop      A
+  97  E038   81                            ret      
+  98                             
+  99                             
+ 100                             MAX7219_ShutdownStart:  
+ 101  E039   88                            push     A
+ 102                             
+ 103  E03A   A60C                          ld       A,#REG_SHUTDOWN
+ 104  E03C   B783                          ld       Write_RegNumber,A
+ 105  E03E   A600                          ld       A,#0
+ 106  E040   B784                          ld       Write_Data,A
+ 107  E042   CDE0DA                        call     MAX7219_Write
+ 108                             
+ 109  E045   84                            pop      A
+ 110  E046   81                            ret      
+ 111                             
+ 112                             
+ 113                             MAX7219_ShutdownStop:  
+ 114  E047   88                            push     A
+ 115                             
+ 116  E048   A60C                          ld       A,#REG_SHUTDOWN
+ 117  E04A   B783                          ld       Write_RegNumber,A
+ 118  E04C   A601                          ld       A,#1
+ 119  E04E   B784                          ld       Write_Data,A
+ 120  E050   CDE0DA                        call     MAX7219_Write
+ 121                             
+ 122  E053   84                            pop      A
+ 123  E054   81                            ret      
+ 124                             
+ 125                             
+ 126                             MAX7219_DisplayTestStart:  
+ 127  E055   88                            push     A
+ 128                             
+ 129  E056   A60F                          ld       A,#REG_DISPLAY_TEST
+ 130  E058   B783                          ld       Write_RegNumber,A
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:17:54 2016
+Page 7  "MAX7219.ASM"
+                                               e:\TP\c6e3\max7219.asm
+
+ 131  E05A   A601                          ld       A,#1
+ 132  E05C   B784                          ld       Write_Data,A
+ 133  E05E   CDE0DA                        call     MAX7219_Write
+ 134                             
+ 135  E061   84                            pop      A
+ 136  E062   81                            ret      
+ 137                             
+ 138                             
+ 139                             MAX7219_DisplayTestStop:  
+ 140  E063   88                            push     A
+ 141                             
+ 142  E064   A60F                          ld       A,#REG_DISPLAY_TEST
+ 143  E066   B783                          ld       Write_RegNumber,A
+ 144  E068   A600                          ld       A,#0
+ 145  E06A   B784                          ld       Write_Data,A
+ 146  E06C   CDE0DA                        call     MAX7219_Write
+ 147                             
+ 148  E06F   84                            pop      A
+ 149  E070   81                            ret      
+ 150                             
+ 151                             
+ 152                             MAX7219_SetBrightness:  
+ 153  E071   88                            push     A
+ 154                             
+ 155  E072   A60A                          ld       A,#REG_INTENSITY
+ 156  E074   B783                          ld       Write_RegNumber,A
+ 157  E076   B680                          ld       A,SetBrightness_Bright
+ 158  E078   A40F                          and      A,#$0F
+ 159  E07A   B784                          ld       Write_Data,A
+ 160  E07C   CDE0DA                        call     MAX7219_Write
+ 161                             
+ 162  E07F   84                            pop      A
+ 163  E080   81                            ret      
+ 164                             
+ 165                             
+ 166                             MAX7219_Clear:  
+ 167  E081   88                            push     A
+ 168                             
+ 169  E082   4F                            clr      A
+ 170  E083   B784                          ld       Write_Data,A
+ 171                             
+ 172  E085   4F                            clr      A
+ 173                             clearNext:  
+ 174  E086   B783                          ld       Write_RegNumber,A
+ 175  E088   CDE0DA                        call     MAX7219_Write
+ 176  E08B   4C                            inc      A
+ 177  E08C   A109                          cp       A,#9
+ 178  E08E   26F6                          jrne     clearNext
+ 179                             
+ 180  E090   84                            pop      A
+ 181  E091   81                            ret      
+ 182                             
+ 183                             
+ 184                             MAX7219_DisplayChar:  
+ 185  E092   88                            push     A
+ 186                                       
+ 187  E093   B681                          ld       A,DisplayChar_Digit
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:17:54 2016
+Page 8  "MAX7219.ASM"
+                                               e:\TP\c6e3\max7219.asm
+
+ 188  E095   B783                          ld       Write_RegNumber,A
+ 189                                       
+ 190  E097   B682                          ld       A,DisplayChar_Character
+ 191  E099   B785                          ld       LookupCode_Character,A
+ 192  E09B   CDE0C3                        call     MAX7219_LookupCode
+ 193                                       
+ 194  E09E   B686                          ld       A,LookupCode_CodeOut
+ 195  E0A0   B784                          ld       Write_Data,A
+ 196                                       
+ 197  E0A2   CDE0DA                        call     MAX7219_Write
+ 198                             
+ 199  E0A5   84                            pop      A
+ 200  E0A6   81                            ret      
+ 201                             
+ 202                             
+ 203                                       
+ 204                             MAX7219_AllumePoint:  
+ 205  E0A7   88                            push     A
+ 206                                       
+ 207  E0A8   B681                          ld       A,DisplayChar_Digit
+ 208  E0AA   B783                          ld       Write_RegNumber,A
+ 209                                       
+ 210  E0AC   A680                          ld       A,#%10000000
+ 211  E0AE   B784                          ld       Write_Data,A
+ 212                                       
+ 213  E0B0   CDE0DA                        call     MAX7219_Write
+ 214                             
+ 215  E0B3   84                            pop      A
+ 216  E0B4   81                            ret      
+ 217                                       
+ 218                                       
+ 219                             MAX7219_AfficheP:  
+ 220  E0B5   88                            push     A
+ 221                                       
+ 222  E0B6   B681                          ld       A,DisplayChar_Digit
+ 223  E0B8   B783                          ld       Write_RegNumber,A
+ 224                                       
+ 225  E0BA   A667                          ld       A,#%01100111
+ 226  E0BC   B784                          ld       Write_Data,A
+ 227                                       
+ 228  E0BE   CDE0DA                        call     MAX7219_Write
+ 229                             
+ 230  E0C1   84                            pop      A
+ 231  E0C2   81                            ret      
+ 232                             
+ 233                             
+ 234                             MAX7219_LookupCode:  
+ 235  E0C3   89                            push     X
+ 236  E0C4   88                            push     A
+ 237                             
+ 238  E0C5   4F                            clr      A             ; Etteint par défaut
+ 239  E0C6   B786                          ld       LookupCode_CodeOut,A
+ 240                                       
+ 241  E0C8   BE85                          ld       X,LookupCode_Character
+ 242  E0CA   A3FF                          cp       X,#$FF
+ 243  E0CC   2709                          jreq     finDisp
+ 244                                       
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:17:54 2016
+Page 9  "MAX7219.ASM"
+                                               e:\TP\c6e3\max7219.asm
+
+ 245  E0CE   A310                          cp       X,#16
+ 246  E0D0   2405                          jruge    finDisp
+ 247  E0D2   D6E000                        ld       A,(MAX7219_ConvCode,X)
+ 248  E0D5   B786                          ld       LookupCode_CodeOut,A
+ 249                                       
+ 250                             finDisp:  
+ 251  E0D7   84                            pop      A
+ 252  E0D8   85                            pop      X
+ 253  E0D9   81                            ret      
+ 254                             
+ 255                             
+ 256                             MAX7219_Write:  
+ 257  E0DA   88                            push     A
+ 258                                       
+ 259  E0DB   1403                          bset     PBDR,#2       ; LOAD = 1
+ 260                             
+ 261  E0DD   B683                          ld       A,Write_RegNumber
+ 262  E0DF   B787                          ld       SendByte_Data,A
+ 263  E0E1   CDE0F1                        call     MAX7219_SendByte
+ 264                                       
+ 265  E0E4   B684                          ld       A,Write_Data
+ 266  E0E6   B787                          ld       SendByte_Data,A
+ 267  E0E8   CDE0F1                        call     MAX7219_SendByte
+ 268                             
+ 269  E0EB   1503                          bres     PBDR,#2       ; LOAD = 0
+ 270  E0ED   1403                          bset     PBDR,#2       ; LOAD = 1
+ 271                             
+ 272  E0EF   84                            pop      A
+ 273  E0F0   81                            ret      
+ 274                             
+ 275                             
+ 276                             MAX7219_SendByte:  
+ 277  E0F1   88                            push     A
+ 278                             
+ 279  E0F2   B687                          ld       A,SendByte_Data
+ 280  E0F4   B731                          ld       SPIDR,A       ; La valeur est envoyée 
+                                                                  ;lorsqu'elle est mise dans 
+                                                                  ;SPIDR
+ 281  E0F6   0F33FD              wait      btjf     SPISR,#7,wait  ; On attend que le bit SPIF soit
+                                                                  ; à 1 (donnée envoyée)
+ 282  E0F9   B631                          ld       A,SPIDR       ; Pour effacer le bit SPIF
+ 283                                       
+ 284  E0FB   84                            pop      A
+ 285  E0FC   81                            ret      
+ 286                             
+ 287                             
+ 288                             
+ 289  E0FD                                 END      
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:17:54 2016
+Page 10  "MAX7219.ASM"
+                                               e:\TP\c6e3\max7219.asm
+
+Symbol Name                       Value     Call       Type  Scope      Rel.  Line  Privacy  Segment   Size  Bytes File
+
+ATCSR                                   0D         no  BYTE  Internal   ABS     33  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+ATRH                                    10         no  BYTE  Internal   ABS     36  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+ATRL                                    11         no  BYTE  Internal   ABS     37  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+ATICRH                                  1F         no  BYTE  Internal   ABS     51  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+ATICRL                                  20         no  BYTE  Internal   ABS     52  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+ADCCSR                                  34         no  BYTE  Internal   ABS     87  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+ADCDRH                                  35         no  BYTE  Internal   ABS     88  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+ADCDRL                                  36         no  BYTE  Internal   ABS     89  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+AWUPR                                   49         no  BYTE  Internal   ABS    131  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+AWUCSR                                  4A         no  BYTE  Internal   ABS    132  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+
+BREAKCR                                 22         no  BYTE  Internal   ABS     54  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+
+CNTRH                                   0E         no  BYTE  Internal   ABS     34  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+CNTRL                                   0F         no  BYTE  Internal   ABS     35  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+
+DCR0H                                   17         no  BYTE  Internal   ABS     43  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DCR0L                                   18         no  BYTE  Internal   ABS     44  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DCR1H                                   19         no  BYTE  Internal   ABS     45  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DCR1L                                   1A         no  BYTE  Internal   ABS     46  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DCR2H                                   1B         no  BYTE  Internal   ABS     47  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DCR2L                                   1C         no  BYTE  Internal   ABS     48  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DCR3H                                   1D         no  BYTE  Internal   ABS     49  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DCR3L                                   1E         no  BYTE  Internal   ABS     50  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DCMCLK                                  40         no  BYTE  Internal   ABS    120  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DCMFA                                   41         no  BYTE  Internal   ABS    121  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DCMFD                                   42         no  BYTE  Internal   ABS    122  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DCMBD                                   43         no  BYTE  Internal   ABS    123  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DCMCR                                   44         no  BYTE  Internal   ABS    124  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DCMCSR                                  45         no  BYTE  Internal   ABS    125  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DMCR                                    4B         no  BYTE  Internal   ABS    138  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DMSR                                    4C         no  BYTE  Internal   ABS    139  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DMBK1H                                  4D         no  BYTE  Internal   ABS    140  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DMBK1L                                  4E         no  BYTE  Internal   ABS    141  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DMBK2H                                  4F         no  BYTE  Internal   ABS    142  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DMBK2L                                  50         no  BYTE  Internal   ABS    143  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+DisplayChar_Digit                       81         no  BYTE  Internal   ABS     50  public   bss          1     1  -
+DisplayChar_Character                   82         no  BYTE  Internal   ABS     51  public   bss          1     1  -
+
+EECSR                                   30         no  BYTE  Internal   ABS     73  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+EICR                                    37         no  BYTE  Internal   ABS     95  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+EISR                                    3C         no  BYTE  Internal   ABS    114  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+
+FCSR                                    2F         no  BYTE  Internal   ABS     67  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+
+INTENSITY_MIN                         0000         no  WORD  Internal   ABS     40  private  textdata     0     0  -
+INTENSITY_MAX                         000F         no  WORD  Internal   ABS     41  private  textdata     0     0  -
+
+LTCSR2                                  08         no  BYTE  Internal   ABS     23  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+LTCARR                                  09         no  BYTE  Internal   ABS     24  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+LTCNTR                                  0A         no  BYTE  Internal   ABS     25  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+LTCSR1                                  0B         no  BYTE  Internal   ABS     26  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+LTICR                                   0C         no  BYTE  Internal   ABS     27  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+LookupCode_Character                    85         no  BYTE  Internal   ABS     56  private  bss          1     1  -
+LookupCode_CodeOut                      86         no  BYTE  Internal   ABS     57  private  bss          1     1  -
+STMicroelectronics assembler v4.49   (C)1987-2016   Wed May 04 11:17:54 2016
+Page 11  "MAX7219.ASM"
+                                               e:\TP\c6e3\max7219.asm
+
+
+MCCSR                                   38         no  BYTE  Internal   ABS    101  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+MAX7219_Init                          E010         no  WORD  Internal   ABS     71  public   textdata    41     0  -
+MAX7219_ShutdownStart                 E039         no  WORD  Internal   ABS    100  public   textdata    14     0  -
+MAX7219_ShutdownStop                  E047         no  WORD  Internal   ABS    113  public   textdata    14     0  -
+MAX7219_DisplayTestStart              E055         no  WORD  Internal   ABS    126  public   textdata    14     0  -
+MAX7219_DisplayTestStop               E063         no  WORD  Internal   ABS    139  public   textdata    14     0  -
+MAX7219_SetBrightness                 E071         no  WORD  Internal   ABS    152  public   textdata    16     0  -
+MAX7219_Clear                         E081         no  WORD  Internal   ABS    166  public   textdata     5     0  -
+MAX7219_AllumePoint                   E0A7         no  WORD  Internal   ABS    204  public   textdata    14     0  -
+MAX7219_AfficheP                      E0B5         no  WORD  Internal   ABS    219  public   textdata    14     0  -
+MAX7219_DisplayChar                   E092         no  WORD  Internal   ABS    184  public   textdata    21     0  -
+MAX7219_ConvCode                      E000         no  WORD  Internal   ABS     67  private  textdata    16     1  -
+MAX7219_LookupCode                    E0C3         no  WORD  Internal   ABS    234  private  textdata    20     0  -
+MAX7219_Write                         E0DA         no  WORD  Internal   ABS    256  private  textdata    23     0  -
+MAX7219_SendByte                      E0F1         no  WORD  Internal   ABS    276  private  textdata     5     0  -
+
+PADR                                    00         no  BYTE  Internal   ABS     11  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+PADDR                                   01         no  BYTE  Internal   ABS     12  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+PAOR                                    02         no  BYTE  Internal   ABS     13  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+PBDR                                    03         no  BYTE  Internal   ABS     15  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+PBDDR                                   04         no  BYTE  Internal   ABS     16  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+PBOR                                    05         no  BYTE  Internal   ABS     17  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+PWMCR                                   12         no  BYTE  Internal   ABS     38  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+PWM0CSR                                 13         no  BYTE  Internal   ABS     39  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+PWM1CSR                                 14         no  BYTE  Internal   ABS     40  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+PWM2CSR                                 15         no  BYTE  Internal   ABS     41  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+PWM3CSR                                 16         no  BYTE  Internal   ABS     42  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+
+RCCR                                    39         no  BYTE  Internal   ABS    107  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+REG_DECODE                            0009         no  WORD  Internal   ABS     34  private  textdata     0     0  -
+REG_INTENSITY                         000A         no  WORD  Internal   ABS     35  private  textdata     0     0  -
+REG_SCAN_LIMIT                        000B         no  WORD  Internal   ABS     36  private  textdata     0     0  -
+REG_SHUTDOWN                          000C         no  WORD  Internal   ABS     37  private  textdata     0     0  -
+REG_DISPLAY_TEST                      000F         no  WORD  Internal   ABS     38  private  textdata     0     0  -
+
+SPIDR                                   31         no  BYTE  Internal   ABS     79  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+SPICR                                   32         no  BYTE  Internal   ABS     80  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+SPISR                                   33         no  BYTE  Internal   ABS     81  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+SICSR                                   3A         no  BYTE  Internal   ABS    108  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+SetBrightness_Bright                    80         no  BYTE  Internal   ABS     48  public   bss          1     1  -
+SendByte_Data                           87         no  BYTE  Internal   ABS     59  private  bss          1     1  -
+
+TRANCR                                  21         no  BYTE  Internal   ABS     53  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+
+WDGCR                                   2E         no  BYTE  Internal   ABS     60  private  textdata     0     0  e:\TP\c6e3\ST7Lite2.INC
+Write_RegNumber                         83         no  BYTE  Internal   ABS     53  private  bss          1     1  -
+Write_Data                              84         no  BYTE  Internal   ABS     54  private  bss          1     1  -
+
+clearNext                             E086         no  WORD  Internal   ABS    173  private  textdata    12     0  -
+
+finDisp                               E0D7         no  WORD  Internal   ABS    250  private  textdata     3     0  -
+
+wait                                  E0F6         no  WORD  Internal   ABS    281  private  textdata     7     0  -
+
+
+93 labels
+No errors on assembly of 'e:\TP\c6e3\max7219.asm'

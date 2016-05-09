@@ -1,6 +1,6 @@
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 21:49:06 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 22:45:38 2016
 Page 1  Assembler
-                                               e:\TP\c8e2\st7lite2.asm
+                                               e:\TP\c8e3\st7lite2.asm
 
    1                             st7/      
    2                             
@@ -59,9 +59,9 @@ Page 1  Assembler
                                  ;*********
   43                             ;		Lite Timer Registers
   44                             ;*************************************************************
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 21:49:06 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 22:45:38 2016
 Page 2  Assembler
-                                               e:\TP\c8e2\st7lite2.asm
+                                               e:\TP\c8e3\st7lite2.asm
 
                                  ;*********
   45                                       
@@ -120,9 +120,9 @@ Page 2  Assembler
   79                             reserved1  
   80  0023                                 DS.B     11            ;  unused
   81                                       
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 21:49:06 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 22:45:38 2016
 Page 3  Assembler
-                                               e:\TP\c8e2\st7lite2.asm
+                                               e:\TP\c8e3\st7lite2.asm
 
   82                             ;*************************************************************
                                  ;*********
@@ -181,9 +181,9 @@ Page 3  Assembler
  121                             
  122                             ;*************************************************************
                                  ;*********
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 21:49:06 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 22:45:38 2016
 Page 4  Assembler
-                                               e:\TP\c8e2\st7lite2.asm
+                                               e:\TP\c8e3\st7lite2.asm
 
  123                             ;		MCC Registers
  124                             ;*************************************************************
@@ -242,9 +242,9 @@ Page 4  Assembler
  166                             ;*************************************************************
                                  ;*********
  167                             
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 21:49:06 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 22:45:38 2016
 Page 5  Assembler
-                                               e:\TP\c8e2\st7lite2.asm
+                                               e:\TP\c8e3\st7lite2.asm
 
  168  004B                       .DMCR     DS.B     1             ; DM Control Register
  169  004C                       .DMSR     DS.B     1             ; DM Status Register
@@ -289,9 +289,9 @@ Page 5  Assembler
                                  ;*********
  200                             
  201  FFE0                                 end      
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 21:49:06 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 22:45:38 2016
 Page 6  Assembler
-                                               e:\TP\c8e2\st7lite2.asm
+                                               e:\TP\c8e3\st7lite2.asm
 
 Symbol Name                       Value     Call       Type  Scope      Rel.  Line  Privacy  Segment   Size  Bytes File
 
@@ -350,9 +350,9 @@ PADR                                    00         no  BYTE  Internal   ABS     
 PADDR                                   01         no  BYTE  Internal   ABS     32  public   bss          1     1  -
 PAOR                                    02         no  BYTE  Internal   ABS     33  public   bss          1     1  -
 PBDR                                    03         no  BYTE  Internal   ABS     35  public   bss          1     1  -
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 21:49:06 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 22:45:38 2016
 Page 7  Assembler
-                                               e:\TP\c8e2\st7lite2.asm
+                                               e:\TP\c8e3\st7lite2.asm
 
 PBDDR                                   04         no  BYTE  Internal   ABS     36  public   bss          1     1  -
 PBOR                                    05         no  BYTE  Internal   ABS     37  public   bss          1     1  -
@@ -381,4 +381,4 @@ reserved4                               46         no  BYTE  Internal   ABS    1
 
 
 66 labels
-No errors on assembly of 'e:\TP\c8e2\st7lite2.asm'
+No errors on assembly of 'e:\TP\c8e3\st7lite2.asm'

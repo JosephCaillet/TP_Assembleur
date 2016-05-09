@@ -1,4 +1,4 @@
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 20:44:54 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 21:49:06 2016
 Page 1  "MAX7219.ASM"
                                                e:\TP\c8e2\max7219.asm
 
@@ -59,7 +59,7 @@ Page 1  "MAX7219.ASM"
   25  0000                                 EXTERN   LTCNTR.b      ; Lite Timer Counter register
   26  0000                                 EXTERN   LTCSR1.b      ; Lite Timer Control/Status 
                                                                   ;register 1
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 20:44:54 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 21:49:06 2016
 Page 2  "MAX7219.ASM"
                                                e:\TP\c8e2\ST7Lite2.INC
 
@@ -120,7 +120,7 @@ Page 2  "MAX7219.ASM"
   63                             ;*************************************************************
                                  ;*********
   64                             ;		Flash Register
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 20:44:54 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 21:49:06 2016
 Page 3  "MAX7219.ASM"
                                                e:\TP\c8e2\ST7Lite2.INC
 
@@ -181,7 +181,7 @@ Page 3  "MAX7219.ASM"
                                  ;*********
  104                             ;		Clock & Reset Registers
  105                             ;*************************************************************
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 20:44:54 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 21:49:06 2016
 Page 4  "MAX7219.ASM"
                                                e:\TP\c8e2\ST7Lite2.INC
 
@@ -243,7 +243,7 @@ Page 4  "MAX7219.ASM"
                                  ;***********
   18                             ;			Déclaration des fonctions et variables publiques
   19                             ;*************************************************************
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 20:44:54 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 21:49:06 2016
 Page 5  "MAX7219.ASM"
                                                e:\TP\c8e2\max7219.asm
 
@@ -304,7 +304,7 @@ Page 5  "MAX7219.ASM"
   71                             MAX7219_Init:  
   72  E010   88                            push     A
   73                                       
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 20:44:54 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 21:49:06 2016
 Page 6  "MAX7219.ASM"
                                                e:\TP\c8e2\max7219.asm
 
@@ -365,7 +365,7 @@ Page 6  "MAX7219.ASM"
  128                             
  129  E056   A60F                          ld       A,#REG_DISPLAY_TEST
  130  E058   B783                          ld       Write_RegNumber,A
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 20:44:54 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 21:49:06 2016
 Page 7  "MAX7219.ASM"
                                                e:\TP\c8e2\max7219.asm
 
@@ -426,7 +426,7 @@ Page 7  "MAX7219.ASM"
  185  E092   88                            push     A
  186                                       
  187  E093   B681                          ld       A,DisplayChar_Digit
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 20:44:54 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 21:49:06 2016
 Page 8  "MAX7219.ASM"
                                                e:\TP\c8e2\max7219.asm
 
@@ -487,7 +487,7 @@ Page 8  "MAX7219.ASM"
  242  E0CA   A3FF                          cp       X,#$FF
  243  E0CC   2709                          jreq     finDisp
  244                                       
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 20:44:54 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 21:49:06 2016
 Page 9  "MAX7219.ASM"
                                                e:\TP\c8e2\max7219.asm
 
@@ -539,7 +539,7 @@ Page 9  "MAX7219.ASM"
  287                             
  288                             
  289  E0FD                                 END      
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 20:44:54 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 21:49:06 2016
 Page 10  "MAX7219.ASM"
                                                e:\TP\c8e2\max7219.asm
 
@@ -600,7 +600,7 @@ LTCSR1                                  0B         no  BYTE  Internal   ABS     
 LTICR                                   0C         no  BYTE  Internal   ABS     27  private  textdata     0     0  e:\TP\c8e2\ST7Lite2.INC
 LookupCode_Character                    85         no  BYTE  Internal   ABS     56  private  bss          1     1  -
 LookupCode_CodeOut                      86         no  BYTE  Internal   ABS     57  private  bss          1     1  -
-STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 20:44:54 2016
+STMicroelectronics assembler v4.49   (C)1987-2016   Mon May 09 21:49:06 2016
 Page 11  "MAX7219.ASM"
                                                e:\TP\c8e2\max7219.asm
 

@@ -46,7 +46,11 @@ Dependencies=
 [Project10]
 Filename=c7e2\c7e2.stp
 Dependencies=
-[Options]
-ActiveProject=c7e2
-ActiveConfig=Debug
-AddSortedElements=0
+
+[Project11]
+Filename=c8e2\c8e2.stp
+Dependencies=
+
+[Project12]
+Filename=c8e3\c8e3.stp
+Dependencies=

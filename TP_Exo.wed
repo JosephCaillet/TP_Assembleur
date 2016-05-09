@@ -818,10 +818,11 @@ ptn_Child2=ChildFrames
 
 [WorkState_v1_2.Frames.MainFrame]
 WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPGCAAAAAAFBAAAAAAICFAAAAAFEDAAAAA
-Title=SofTec STVD7 - TP_Exo.stw - [c7e2.asm]
+Title=SofTec STVD7 - TP_Exo.stw - [c8e3.asm]
 
 [WorkState_v1_2.Frames.ChildFrames]
 ptn_Child1=Document-0
+ptn_Child2=Document-1
 
 [WorkState_v1_2.Frames.ChildFrames.Document-0]
 ptn_Child1=ViewFrame-0
@@ -830,6 +831,17 @@ ptn_Child1=ViewFrame-0
 DocPathName=c7e2\c7e2.asm
 DocumentString=
 DocTemplateIndex=0
-WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPMPPPPPPPCOPPPPPPGBAAAAAANBAAAAAADLDAAAAAAIBAAAAA
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPMPPPPPPPCOPPPPPPGBAAAAAANBAAAAAADLDAAAAAAIBAAAAA
+IsActiveChildFrame=False
+IsFrameVisible=True
+
+[WorkState_v1_2.Frames.ChildFrames.Document-1]
+ptn_Child1=ViewFrame-0
+
+[WorkState_v1_2.Frames.ChildFrames.Document-1.ViewFrame-0]
+DocPathName=c8e3\c8e3.asm
+DocumentString=
+DocTemplateIndex=0
+WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPMPPPPPPPCOPPPPPPGBAAAAAANBAAAAAAHLDAAAAACIBAAAAA
 IsActiveChildFrame=True
 IsFrameVisible=True

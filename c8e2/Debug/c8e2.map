@@ -1,0 +1,117 @@
+
+Segment List
+------------
+
+e:\TP\c8e2\max7219.asm[1]   46-   63        80 -       87                 'ram0'  [void]
+e:\TP\c8e2\c8e2.asm[1]   38-   60        88 -       8B                 'ram0'  [void]
+e:\TP\c8e2\max7219.asm[2]   64-  288      E000 -     E0FC                 'rom'  [textdata]
+e:\TP\c8e2\c8e2.asm[2]   61-  313      E0FD -     E1DE                 'rom'  [text]
+e:\TP\c8e2\c8e2.asm[3]  314-  334      FFE0 -     FFFF                 'vectit'  [data]
+e:\TP\c8e2\st7lite2.asm[1]   24-  177         0 -       50                 'periph'  [void]
+
+
+Class List
+----------
+
+0 '        ram0'   byte from       80 to       8B (lim      17F) =  4% D
+0 '       stack'   byte from      180 to      17F (lim      1FF) =  0% V
+0 '         rom'   byte from     E000 to     E1DE (lim     FFDF) =  5% CS
+0 '      vectit'   byte from     FFE0 to     FFFF (lim     FFFF) =100% S
+0 '      periph'   byte from        0 to       50 (lim       7F) = 62% D
+
+
+
+External Label list
+-------------------
+
+Symbol Name                       Value     Scope  Def(line)
+
+ATCSR                                   0D  BYTE  e:\TP\c8e2\st7lite2.asm(56)
+ATRH                                    10  BYTE  e:\TP\c8e2\st7lite2.asm(59)
+ATRL                                    11  BYTE  e:\TP\c8e2\st7lite2.asm(60)
+ATICRH                                  1F  BYTE  e:\TP\c8e2\st7lite2.asm(74)
+ATICRL                                  20  BYTE  e:\TP\c8e2\st7lite2.asm(75)
+ADCCSR                                  34  BYTE  e:\TP\c8e2\st7lite2.asm(112)
+ADCDRH                                  35  BYTE  e:\TP\c8e2\st7lite2.asm(113)
+ADCDRL                                  36  BYTE  e:\TP\c8e2\st7lite2.asm(114)
+AWUPR                                   49  BYTE  e:\TP\c8e2\st7lite2.asm(161)
+AWUCSR                                  4A  BYTE  e:\TP\c8e2\st7lite2.asm(162)
+
+BREAKCR                                 22  BYTE  e:\TP\c8e2\st7lite2.asm(77)
+
+CNTRH                                   0E  BYTE  e:\TP\c8e2\st7lite2.asm(57)
+CNTRL                                   0F  BYTE  e:\TP\c8e2\st7lite2.asm(58)
+
+DisplayChar_Digit                       81  BYTE  e:\TP\c8e2\max7219.asm(50)
+DisplayChar_Character                   82  BYTE  e:\TP\c8e2\max7219.asm(51)
+DCR0H                                   17  BYTE  e:\TP\c8e2\st7lite2.asm(66)
+DCR0L                                   18  BYTE  e:\TP\c8e2\st7lite2.asm(67)
+DCR1H                                   19  BYTE  e:\TP\c8e2\st7lite2.asm(68)
+DCR1L                                   1A  BYTE  e:\TP\c8e2\st7lite2.asm(69)
+DCR2H                                   1B  BYTE  e:\TP\c8e2\st7lite2.asm(70)
+DCR2L                                   1C  BYTE  e:\TP\c8e2\st7lite2.asm(71)
+DCR3H                                   1D  BYTE  e:\TP\c8e2\st7lite2.asm(72)
+DCR3L                                   1E  BYTE  e:\TP\c8e2\st7lite2.asm(73)
+DCMCLK                                  40  BYTE  e:\TP\c8e2\st7lite2.asm(147)
+DCMFA                                   41  BYTE  e:\TP\c8e2\st7lite2.asm(148)
+DCMFD                                   42  BYTE  e:\TP\c8e2\st7lite2.asm(149)
+DCMBD                                   43  BYTE  e:\TP\c8e2\st7lite2.asm(150)
+DCMCR                                   44  BYTE  e:\TP\c8e2\st7lite2.asm(151)
+DCMCSR                                  45  BYTE  e:\TP\c8e2\st7lite2.asm(152)
+DMCR                                    4B  BYTE  e:\TP\c8e2\st7lite2.asm(168)
+DMSR                                    4C  BYTE  e:\TP\c8e2\st7lite2.asm(169)
+DMBK1H                                  4D  BYTE  e:\TP\c8e2\st7lite2.asm(170)
+DMBK1L                                  4E  BYTE  e:\TP\c8e2\st7lite2.asm(171)
+DMBK2H                                  4F  BYTE  e:\TP\c8e2\st7lite2.asm(172)
+DMBK2L                                  50  BYTE  e:\TP\c8e2\st7lite2.asm(173)
+
+EECSR                                   30  BYTE  e:\TP\c8e2\st7lite2.asm(98)
+EICR                                    37  BYTE  e:\TP\c8e2\st7lite2.asm(120)
+EISR                                    3C  BYTE  e:\TP\c8e2\st7lite2.asm(138)
+
+FCSR                                    2F  BYTE  e:\TP\c8e2\st7lite2.asm(92)
+
+LTCSR2                                  08  BYTE  e:\TP\c8e2\st7lite2.asm(46)
+LTCARR                                  09  BYTE  e:\TP\c8e2\st7lite2.asm(47)
+LTCNTR                                  0A  BYTE  e:\TP\c8e2\st7lite2.asm(48)
+LTCSR1                                  0B  BYTE  e:\TP\c8e2\st7lite2.asm(49)
+LTICR                                   0C  BYTE  e:\TP\c8e2\st7lite2.asm(50)
+
+MAX7219_Init                          E010  WORD  e:\TP\c8e2\max7219.asm(71)
+MAX7219_ShutdownStart                 E039  WORD  e:\TP\c8e2\max7219.asm(100)
+MAX7219_ShutdownStop                  E047  WORD  e:\TP\c8e2\max7219.asm(113)
+MAX7219_DisplayTestStart              E055  WORD  e:\TP\c8e2\max7219.asm(126)
+MAX7219_DisplayTestStop               E063  WORD  e:\TP\c8e2\max7219.asm(139)
+MAX7219_SetBrightness                 E071  WORD  e:\TP\c8e2\max7219.asm(152)
+MAX7219_Clear                         E081  WORD  e:\TP\c8e2\max7219.asm(166)
+MAX7219_AllumePoint                   E0A7  WORD  e:\TP\c8e2\max7219.asm(204)
+MAX7219_AfficheP                      E0B5  WORD  e:\TP\c8e2\max7219.asm(219)
+MAX7219_DisplayChar                   E092  WORD  e:\TP\c8e2\max7219.asm(184)
+MCCSR                                   38  BYTE  e:\TP\c8e2\st7lite2.asm(126)
+
+PBDR                                    03  BYTE  e:\TP\c8e2\st7lite2.asm(35)
+PADR                                    00  BYTE  e:\TP\c8e2\st7lite2.asm(31)
+PADDR                                   01  BYTE  e:\TP\c8e2\st7lite2.asm(32)
+PAOR                                    02  BYTE  e:\TP\c8e2\st7lite2.asm(33)
+PBDDR                                   04  BYTE  e:\TP\c8e2\st7lite2.asm(36)
+PBOR                                    05  BYTE  e:\TP\c8e2\st7lite2.asm(37)
+PWMCR                                   12  BYTE  e:\TP\c8e2\st7lite2.asm(61)
+PWM0CSR                                 13  BYTE  e:\TP\c8e2\st7lite2.asm(62)
+PWM1CSR                                 14  BYTE  e:\TP\c8e2\st7lite2.asm(63)
+PWM2CSR                                 15  BYTE  e:\TP\c8e2\st7lite2.asm(64)
+PWM3CSR                                 16  BYTE  e:\TP\c8e2\st7lite2.asm(65)
+
+RCCR                                    39  BYTE  e:\TP\c8e2\st7lite2.asm(132)
+
+SPIDR                                   31  BYTE  e:\TP\c8e2\st7lite2.asm(104)
+SPISR                                   33  BYTE  e:\TP\c8e2\st7lite2.asm(106)
+SetBrightness_Bright                    80  BYTE  e:\TP\c8e2\max7219.asm(48)
+SPICR                                   32  BYTE  e:\TP\c8e2\st7lite2.asm(105)
+SICSR                                   3A  BYTE  e:\TP\c8e2\st7lite2.asm(133)
+
+TRANCR                                  21  BYTE  e:\TP\c8e2\st7lite2.asm(76)
+
+WDGCR                                   2E  BYTE  e:\TP\c8e2\st7lite2.asm(86)
+
+
+74 labels

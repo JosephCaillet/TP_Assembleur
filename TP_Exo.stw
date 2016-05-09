@@ -46,3 +46,7 @@ Dependencies=
 [Project10]
 Filename=c7e2\c7e2.stp
 Dependencies=
+[Options]
+ActiveProject=c7e2
+ActiveConfig=Debug
+AddSortedElements=0

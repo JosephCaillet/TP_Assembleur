@@ -47,7 +47,7 @@ valeurUnite	DS.B 1
 valeurDizaine	DS.B 1
 retenue	DS.B 1
 running	DS.B 1
-
+compte_it	DS.B 1
 
 ;************************************************************************
 ;
@@ -225,22 +225,22 @@ aff_d:
 
 ;----------------------------------------------------------;
 
-tempo:
-initBoucle1:
-	CLR X
-boucle1:
-	INC X
-	CALL initBoucle2
-	CP X,#181
-	JRNE boucle1
-	RET
-initBoucle2:
-	CLR Y
-boucle2:
-	INC Y
-	CP Y,#181
-	JRNE boucle2
-	RET
+;tempo:
+;initBoucle1:
+;	CLR X
+;boucle1:
+;	INC X
+;	CALL initBoucle2
+;	CP X,#181
+;	JRNE boucle1
+;	RET
+;initBoucle2:
+;	CLR Y
+;boucle2:
+;	INC Y
+;	CP Y,#181
+;	JRNE boucle2
+;	RET
 
 ;---------------------------------------------------------;
 
@@ -248,6 +248,29 @@ init_oscRC:
 	ld A,RCCR0
 	ld RCCR,A
 	RET
+
+;---------------------------------------------------------;
+
+init_timer:
+	LD	A,LTCSR1
+	AND A,#%00001000
+	LD	LTCSR1,A
+
+;---------------------------------------------------------;
+
+attend_500ms:
+	CLR compteur_it
+attente_compte_it:
+	LD TB1IE,#1
+	WFI
+	CP compte_it,#62;500ms/8ms=62.5
+	JRNE attente_compte_it
+	LD TB1IE,#0
+	RET
+	
+;---------------------------------------------------------;
+
+
 
 ;************************************************************************
 ;
@@ -282,7 +305,7 @@ boucl
 	call	inc_aff
 
 skip_aff:
-	call	tempo
+	call	attend_500ms
 
 	JP	boucl
 
@@ -304,6 +327,11 @@ int_arret:
 	clr running
 	iret
 
+timer_8ms_interrupt:
+	INC	compte_it
+	LD	A,LTCSR1
+	
+
 ;************************************************************************
 ;
 ;  ZONE DE DECLARATION DES VECTEURS D'INTERRUPTION
@@ -316,7 +344,7 @@ int_arret:
 
 		DC.W	dummy_rt	; Adresse FFE0-FFE1h
 SPI_it		DC.W	dummy_rt	; Adresse FFE2-FFE3h
-lt_RTC1_it	DC.W	dummy_rt	; Adresse FFE4-FFE5h
+lt_RTC1_it	DC.W	timer_8ms_interrupt	; Adresse FFE4-FFE5h
 lt_IC_it	DC.W	dummy_rt	; Adresse FFE6-FFE7h
 at_timerover_it	DC.W	dummy_rt	; Adresse FFE8-FFE9h
 at_timerOC_it	DC.W	dummy_rt	; Adresse FFEA-FFEBh

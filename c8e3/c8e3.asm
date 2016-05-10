@@ -90,7 +90,7 @@ pwm_q1:
 	LD	DCR0H,A;DCR0H : 4 MSB de la valeur de DCR,
 	
 	LD	A,#$30
-	LD	DCR0H,A;DCR0L : 8 LSB de la valeur de DCR.
+	LD	DCR0L,A;DCR0L : 8 LSB de la valeur de DCR.
 	
 	LD A,#1
 	LD TRANCR,A;prise en compte
@@ -110,7 +110,7 @@ pwm_q2:
 	LD	DCR0H,A;DCR0H : 4 MSB de la valeur de DCR,
 	
 	LD	A,#$EF
-	LD	DCR0H,A;DCR0L : 8 LSB de la valeur de DCR.
+	LD	DCR0L,A;DCR0L : 8 LSB de la valeur de DCR.
 	
 	LD A,#1
 	LD TRANCR,A;prise en compte

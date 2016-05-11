@@ -80,6 +80,7 @@ valeurAffiche DS.B 1
 ;
 ;************************************************************************
 
+;--- Initialisation des registres SPICR, SPISR ainsi que du port PB avec les masques PBDDR et BPOR ---;
 init_port_spi:
 	ld a,#$0C
 	ld SPICR,a
@@ -88,10 +89,12 @@ init_port_spi:
 	ld a,#$5C
 	ld SPICR,a
 	
+	;--- PBDDR = xxxxx1xx
 	LD	A,PBDDR;init PBDDR dire quoi est en push/pull etc
 	OR	A,#%00000100
 	LD	PBDDR,A
 	
+	;--- PBOR = xxxxx1xx
 	LD	A,PBOR;init PBOR
 	OR	A,#%00000100
 	LD	PBOR,A
@@ -113,14 +116,17 @@ init_port_spi:
 main:
 	RSP			; Reset Stack Pointer
 	
+	;--- appel de l'initialisation nécessaire
 	call init_port_spi
 	ld a,#5
 	ld valeurAffiche,a
 
 test
+	;--- reset de l'affichage
 	call MAX7219_Init
 	call MAX7219_Clear
-	;ld a,#4 ;Si ne s'affiche pas au bon endroit, commenter cette ligne et décommenter la suivante
+	;--- affichage de la valeur choisie
+	;ld a,#1 ;Si ne s'affiche pas au bon endroit, commenter cette ligne et décommenter la suivante
 	ld a,#4
 	ld DisplayChar_Digit,a
 	ld a, valeurAffiche

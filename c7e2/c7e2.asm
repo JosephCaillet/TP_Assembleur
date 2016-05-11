@@ -83,6 +83,8 @@ running	DS.B 1
 ;
 ;************************************************************************
 
+;--- Initialisation des registres SPICR, SPISR ainsi que du port PB avec les masques PBDDR et BPOR ---;
+;--- PBDDR et PBOR sont également initialisés dans une autre fonction mais ce ne sont pas les mêmes bits qui sont initialisés ---;
 init_port_spi:
 	ld a,#$0C
 	ld SPICR,a
@@ -91,10 +93,12 @@ init_port_spi:
 	ld a,#$5C
 	ld SPICR,a
 	
+	;--- PBDDR = xxxxx1xx
 	LD	A,PBDDR;init PBDDR dire quoi est en push/pull etc
 	OR	A,#%00000100
 	LD	PBDDR,A
 	
+	;--- PBOR = xxxxx1xx
 	LD	A,PBOR;init PBOR
 	OR	A,#%00000100
 	LD	PBOR,A
@@ -102,22 +106,28 @@ init_port_spi:
 
 ;----------------------------------------------------------;
 
+;--- Initialise les ports PA et PB avec les masques PADDR, PAOR, PBDDR et PBOR ---;
+;--- PBDDR et PBOR sont également initialisés dans une autre fonction mais ce ne sont pas les mêmes bits qui sont initialisés ---;
 init_io_ports:
+	;--- PADDR = xxxx0xxx
 	LD	A,PADDR;init PADDR dire quoi est en push/pull etc
 	AND	A,#%11110111
 	;OR	A,#%00000000
 	LD	PADDR,A
 	
+	;--- PAOR = xxxx1xxx
 	LD	A,PAOR;init PAOR
 	;AND	A,#%11111111
 	OR	A,#%00001000
 	LD	PAOR,A
 	
+	;--- PBDDR = xxxxxxx0
 	LD	A,PBDDR;init PADDR dire quoi est en push/pull etc
 	AND	A,#%11111110
 	;OR	A,#%00000000
 	LD	PBDDR,A
 	
+	;--- PBOR = xxxxxxx1
 	LD	A,PBOR;init PAOR
 	;AND	A,#%11111111
 	OR	A,#%00000001
@@ -126,13 +136,16 @@ init_io_ports:
 	RET
 
 ;----------------------------------------------------------;
-	
+
+;--- Initialise les masques EICR et EISR pour les interruptions ---;
 init_int_mask:
+	;--- EICR = 10xxxx10
 	ld a,EICR
 	and a,#%10111110
 	or a,#%10000010
 	ld EICR, a
 	
+	;--- EISR = 00xxxx11
 	ld a,EISR
 	and a,#%00111111
 	or a,#%00000011
@@ -144,6 +157,7 @@ init_int_mask:
 
 ;----------------------------------------------------------;
 
+;--- initialise à 0 les variables servant au compteur ---;
 init_chrono:
 	clr valeurUnite
 	clr valeurDizaine
@@ -152,6 +166,7 @@ init_chrono:
 
 ;----------------------------------------------------------;
 
+;--- Efface le contenu de l'afficheur ---;
 init_aff:
 	call MAX7219_Init
 	call MAX7219_Clear
@@ -159,6 +174,7 @@ init_aff:
 
 ;----------------------------------------------------------;
 
+;--- incrémente la valeur servant à l'afficheur ---;
 inc_aff:
 	ld a,valeurUnite
 	;--- if(a == 9) ---
@@ -205,6 +221,7 @@ n_inc_d
 
 ;----------------------------------------------------------;
 
+;--- change le chiffre de l'unité sur l'afficheur ---;
 aff_u:
 	ld a,#4
 	ld DisplayChar_Digit,a
@@ -215,6 +232,7 @@ aff_u:
 
 ;----------------------------------------------------------;
 
+;--- change le chiffre de la dizaine sur l'afficheur ---;
 aff_d:
 	ld a,#3
 	ld DisplayChar_Digit,a
@@ -225,6 +243,7 @@ aff_d:
 
 ;----------------------------------------------------------;
 
+;--- fonction qui permet d'avoir un délai de 0,5 sec dans le programme ---;
 tempo:
 initBoucle1:
 	CLR X
@@ -244,6 +263,7 @@ boucle2:
 
 ;---------------------------------------------------------;
 
+;--- applique une constante à la clock afin de corriger la fréquence de fonctionnement ---;
 init_oscRC:
 	ld A,RCCR0
 	ld RCCR,A
@@ -263,6 +283,7 @@ init_oscRC:
 ;************************************************************************
 
 main:
+	;--- appel de toutes les initialisations
 	RSP			; Reset Stack Pointer
 	call	init_oscRC
 	call	init_io_ports
@@ -272,9 +293,11 @@ main:
 	call	init_chrono
 		
 boucl
+	;--- maj de l'affichage des unités puis des dizaines
 	call	aff_u
 	call	aff_d
 	
+	;--- si running est à 1, on incremente le compteur
 	ld	A,running
 	cp	A,#0
 	JREQ skip_aff	
@@ -282,7 +305,7 @@ boucl
 	call	inc_aff
 
 skip_aff:
-	call	tempo
+	call	tempo ;--- 0,5s de délais
 
 	JP	boucl
 
@@ -295,11 +318,13 @@ skip_aff:
 
 dummy_rt:	IRET	; Procédure vide : retour au programme principal.
 
+;--- programme d'interruption, mets la variable de fonctionnement à 1 ---;
 int_marche:
 	ld a,#1
 	ld running,a
 	iret
 
+;--- programme d'interruption, mets la variable de fonctionnement à 0 ---;
 int_arret:
 	clr running
 	iret

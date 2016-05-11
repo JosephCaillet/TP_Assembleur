@@ -77,24 +77,30 @@ TEMPO EQU 18999
 ;
 ;************************************************************************
 
+;--- Initialise les ports PA et PB avec les masques PADDR, PAOR, PBDDR et PBOR ---;
 init_ports_led:
+	;--- PADDR = 1xx11x11
 	LD	A,PADDR;init PADDR dire quoi est en push/pull etc
 	OR	A,#%10011011
 	LD	PADDR,A
 	
+	;--- PAOR = 1xx11x11
 	LD	A,PAOR;init PAOR
 	OR	A,#%10011011
 	LD	PAOR,A
 	
+	;--- PBDDR = x111xxxx
 	LD	A,PBDDR;init PBDDR dire quoi est en push/pull etc
 	OR	A,#%01110000
 	LD	PBDDR,A
 	
+	;--- PBDDR = x111xxxx
 	LD	A,PBOR;init PBOR
 	OR	A,#%01110000
 	LD	PBOR,A
 	RET
 
+;--- 
 allume_impair:
 	LD	A,PADR
 	OR	A,#%10001001

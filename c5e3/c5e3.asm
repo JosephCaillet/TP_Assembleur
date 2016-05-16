@@ -77,31 +77,37 @@ ST7/
 ;
 ;************************************************************************
 
+;--- Initialise les ports PA et PB avec les masques PADDR, PAOR, PBDDR et PBOR ---;
 init_port:
-	LD	A,PADDR;init PADDR dire quoi est en push/pull etc
+	;--- PADDR = 1xxx1xx1
+	LD	A,PADDR
 	OR	A,#%10001001
 	LD	PADDR,A
 	
+	;--- PAOR = 1xxx1xx1
 	LD	A,PAOR;init PAOR
 	OR	A,#%10001001
 	LD	PAOR,A
 	
-	LD	A,PBDDR;init PBDDR dire quoi est en push/pull etc
+	;--- PBDDR = xx1xxxxx
+	LD	A,PBDDR
 	OR	A,#%00100000
 	LD	PBDDR,A
 	
+	;--- PBOR = xx1xxxxx
 	LD	A,PBOR;init PBOR
 	OR	A,#%00100000
 	LD	PBOR,A
 	RET
 
+;--- allume les LEDs 0, 3, 5 et 7 ---;
 ledOn:
 	BSET	PADR,#0;allume la led
 	BSET	PADR,#3
 	BSET	PADR,#7
 	BSET	PBDR,#5
 boucl:
-	WFI
+	WFI ;Wait For Interrupt
 	JP boucl
 		
 ;************************************************************************

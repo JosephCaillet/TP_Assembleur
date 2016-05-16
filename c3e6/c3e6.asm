@@ -77,7 +77,8 @@ tableau DC.B 25,4,2,15,16,101,33,3
 ;  ZONE DE DECLARATION DES SOUS-PROGRAMMES
 ;
 ;************************************************************************
-	
+
+;--- Fonction de tri de tableau. Le nombre le plus hauut sera en dernière position du tableau ---;
 min_max:
 	ld x,#0
 	ld a,(tableau,x)

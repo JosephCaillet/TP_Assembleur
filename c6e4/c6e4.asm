@@ -82,6 +82,7 @@ retenue DS.B 1
 ;
 ;************************************************************************
 
+;--- Initialisation des registres SPICR, SPISR ainsi que du port PB avec les masques PBDDR et BPOR ---;
 init_port_spi:
 	ld a,#$0C
 	ld SPICR,a
@@ -101,6 +102,7 @@ init_port_spi:
 
 ;----------------------------------------------------------;
 
+;--- initialise à 0 les variables servant au compteur ---;
 init_chrono:
 	clr valeurUnite
 	clr valeurDizaine
@@ -109,6 +111,7 @@ init_chrono:
 
 ;----------------------------------------------------------;
 
+;--- Efface le contenu de l'afficheur ---;
 init_aff:
 	call MAX7219_Init
 	call MAX7219_Clear
@@ -116,6 +119,7 @@ init_aff:
 
 ;----------------------------------------------------------;
 
+;--- incrémente la valeur servant à l'afficheur ---;
 inc_aff:
 	ld a,valeurUnite
 	;--- if(a == 9) ---
@@ -162,6 +166,7 @@ n_inc_d
 
 ;----------------------------------------------------------;
 
+;--- change le chiffre de l'unité sur l'afficheur ---;
 aff_u:
 	ld a,#4
 	ld DisplayChar_Digit,a
@@ -172,6 +177,7 @@ aff_u:
 
 ;----------------------------------------------------------;
 
+;--- change le chiffre de la dizaine sur l'afficheur ---;
 aff_d:
 	ld a,#3
 	ld DisplayChar_Digit,a
@@ -182,6 +188,7 @@ aff_d:
 
 ;----------------------------------------------------------;
 
+;--- fonction qui permet d'avoir un délai de 0,5 sec dans le programme ---;
 tempo:
 initBoucle1:
 	CLR X
@@ -213,6 +220,7 @@ boucle2:
 ;************************************************************************
 
 main:
+	;--- appel de toutes les initialisations
 	RSP			; Reset Stack Pointer
 	
 	call init_port_spi
@@ -220,11 +228,14 @@ main:
 	call init_chrono
 		
 boucl
+	;--- maj de l'affichage des unités puis des dizaines
 	call aff_u
 	call aff_d
 	
+	;--- On incrémente le compteur
 	call inc_aff
 	
+	;--- temporisation de 0,5s
 	call tempo
 
 	JP	boucl

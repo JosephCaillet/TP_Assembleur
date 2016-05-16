@@ -80,27 +80,27 @@ TEMPO EQU 18999
 ;--- Initialise les ports PA et PB avec les masques PADDR, PAOR, PBDDR et PBOR ---;
 init_ports_led:
 	;--- PADDR = 1xx11x11
-	LD	A,PADDR;init PADDR dire quoi est en push/pull etc
+	LD	A,PADDR
 	OR	A,#%10011011
 	LD	PADDR,A
 	
 	;--- PAOR = 1xx11x11
-	LD	A,PAOR;init PAOR
+	LD	A,PAOR
 	OR	A,#%10011011
 	LD	PAOR,A
 	
 	;--- PBDDR = x111xxxx
-	LD	A,PBDDR;init PBDDR dire quoi est en push/pull etc
+	LD	A,PBDDR
 	OR	A,#%01110000
 	LD	PBDDR,A
 	
 	;--- PBDDR = x111xxxx
-	LD	A,PBOR;init PBOR
+	LD	A,PBOR 
 	OR	A,#%01110000
 	LD	PBOR,A
 	RET
 
-;--- 
+;--- change les masques PADR et PBDR afin d'allumer les leds impaires ---;
 allume_impair:
 	LD	A,PADR
 	OR	A,#%10001001
@@ -117,6 +117,7 @@ allume_impair:
 	;BSET	PBDR,#5
 	RET
 
+;--- change les masques PADR et PBDR afin d'allumer les leds paires ---;
 allume_pair:
 	LD	A,PADR
 	OR	A,#%00011010
@@ -133,6 +134,7 @@ allume_pair:
 	;BRES	PBDR,#5
 	RET
 
+;--- temporisation de 0,5s qui ne fait rien d'autre que perdre du temps ---;
 attend_500ms:
 initBoucle1:
 	CLR X;3
@@ -165,8 +167,10 @@ boucle2:
 
 main:
 	RSP			; Reset Stack Pointer
+	;--- Appel de l'initialisation des ports
 	CALL	init_ports_led
 		
+	;--- boucle qui allume les leds paires, attend 0,5s, allume les leds impaires puis attend à nouveau 0,5s
 boucl
 	CALL allume_pair
 	CALL attend_500ms

@@ -78,26 +78,32 @@ appui DS.B 1
 ;
 ;************************************************************************
 
+;--- Initialise le port PA avec les masques PADDR et PAOR ---;
 init_portA:
-	LD	A,PADDR;init PADDR dire quoi est en push/pull etc
+	;--- PADDR = xxxx0xx1
+	LD	A,PADDR
 	AND	A,#%11110111
 	OR	A,#%00000001
 	LD	PADDR,A
 	
+	;--- PAOR = xxxx0xx1
 	LD	A,PAOR;init PAOR
 	AND	A,#%11110111
 	OR	A,#%00000001
 	LD	PAOR,A
 	RET
 
+;--- Allume la LED 0 ---;
 ledOn:
 	BSET PADR,#0;allume la led
 	JP boucl
 	
+;--- Eteint la LED 0 ---;
 ledOff:
 	BRES PADR,#0;etteint la led
 	JP boucl
 
+;--- Vérifie l'état du bouton PA3 et s'il est appuyé, met la variable appui à 1, sinon à 0 --;
 etat_bouton:
 	BTJT	PADR,#3,appuiOui
 	JP appuiNon
@@ -122,8 +128,11 @@ appuiNon:
 ;************************************************************************
 
 main:
+	;--- Appel des initialisations
 	RSP			; Reset Stack Pointer
 	CALL init_portA
+
+	;--- Si le bouton est appuyé, allume la LED
 boucl
 	CALL	etat_bouton
 	LD	A,appui

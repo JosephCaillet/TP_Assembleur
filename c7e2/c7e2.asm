@@ -94,12 +94,12 @@ init_port_spi:
 	ld SPICR,a
 	
 	;--- PBDDR = xxxxx1xx
-	LD	A,PBDDR;init PBDDR dire quoi est en push/pull etc
+	LD	A,PBDDR
 	OR	A,#%00000100
 	LD	PBDDR,A
 	
 	;--- PBOR = xxxxx1xx
-	LD	A,PBOR;init PBOR
+	LD	A,PBOR
 	OR	A,#%00000100
 	LD	PBOR,A
 	RET
@@ -110,25 +110,25 @@ init_port_spi:
 ;--- PBDDR et PBOR sont également initialisés dans une autre fonction mais ce ne sont pas les mêmes bits qui sont initialisés ---;
 init_io_ports:
 	;--- PADDR = xxxx0xxx
-	LD	A,PADDR;init PADDR dire quoi est en push/pull etc
+	LD	A,PADDR
 	AND	A,#%11110111
 	;OR	A,#%00000000
 	LD	PADDR,A
 	
 	;--- PAOR = xxxx1xxx
-	LD	A,PAOR;init PAOR
+	LD	A,PAOR
 	;AND	A,#%11111111
 	OR	A,#%00001000
 	LD	PAOR,A
 	
 	;--- PBDDR = xxxxxxx0
-	LD	A,PBDDR;init PADDR dire quoi est en push/pull etc
+	LD	A,PBDDR
 	AND	A,#%11111110
 	;OR	A,#%00000000
 	LD	PBDDR,A
 	
 	;--- PBOR = xxxxxxx1
-	LD	A,PBOR;init PAOR
+	LD	A,PBOR
 	;AND	A,#%11111111
 	OR	A,#%00000001
 	LD	PBOR,A

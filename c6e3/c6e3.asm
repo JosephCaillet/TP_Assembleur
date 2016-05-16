@@ -90,12 +90,12 @@ init_port_spi:
 	ld SPICR,a
 	
 	;--- PBDDR = xxxxx1xx
-	LD	A,PBDDR;init PBDDR dire quoi est en push/pull etc
+	LD	A,PBDDR
 	OR	A,#%00000100
 	LD	PBDDR,A
 	
 	;--- PBOR = xxxxx1xx
-	LD	A,PBOR;init PBOR
+	LD	A,PBOR
 	OR	A,#%00000100
 	LD	PBOR,A
 	RET

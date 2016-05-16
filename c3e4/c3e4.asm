@@ -79,6 +79,7 @@ increment DS.B 1
 ;
 ;************************************************************************
 
+;--- fonction somme somme + incrément ---;
 sum:
 	LD A,somme
 	LD increment,X
@@ -87,6 +88,7 @@ sum:
 	DEC X
 	RET
 
+;--- fonction somme (de 0 à X) de X ---;
 bigsum:
 	CLR somme
 	LD increment,A
@@ -117,7 +119,7 @@ main:
 	RSP			; Reset Stack Pointer
 
 init:
-	LD A,#4
+	LD A,#22
 	CALL bigsum
 	
 stop:

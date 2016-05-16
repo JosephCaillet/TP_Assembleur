@@ -79,6 +79,7 @@ increment DS.B 1
 ;
 ;************************************************************************
 
+;--- fonction somme somme + incrément ---;
 sum:
 	LD A,somme
 	LD increment,X

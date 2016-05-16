@@ -96,12 +96,12 @@ init_port:
 	RET
 
 ledOn:
-	BSET	PADR,#0;allume la led
-	BSET	PADR,#3
+	BSET	PADR,#0;allume les led impaires, comme fait une seule fois, on utilise bset plutot que les masques,
+	BSET	PADR,#3;plus facile pour moi, et n'impacte pas les performance, comme fais une seule fois.
 	BSET	PADR,#7
 	BSET	PBDR,#5
 boucl:
-	WFI
+	WFI;economie d'energie
 	JP boucl
 		
 ;************************************************************************

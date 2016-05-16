@@ -54,3 +54,7 @@ Dependencies=
 [Project12]
 Filename=c8e3\c8e3.stp
 Dependencies=
+
+[Project13]
+Filename=..\projet\code\tintin.stp
+Dependencies=

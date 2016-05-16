@@ -96,23 +96,23 @@ init_portA:
 ;--- Allume la LED 0 ---;
 ledOn:
 	BSET PADR,#0;allume la led
-	JP boucl
+	JP boucl;retour boucle principale
 	
 ;--- Eteint la LED 0 ---;
 ledOff:
 	BRES PADR,#0;etteint la led
-	JP boucl
+	JP boucl;retour boucle principale
 
 ;--- Vérifie l'état du bouton PA3 et s'il est appuyé, met la variable appui à 1, sinon à 0 --;
 etat_bouton:
-	BTJT	PADR,#3,appuiOui
-	JP appuiNon
+	BTJT	PADR,#3,appuiOui;si btn enclenché
+	JP appuiNon;si btn pas enclenché
 appuiOui:
 	LD	A,#1
-	LD	appui,A
+	LD	appui,A;appui=1, le btn est enclenché.
 	RET
 appuiNon:
-	CLR	appui
+	CLR	appui;appui=0, btn non enclenché.
 	RET	
 ;************************************************************************
 ;
@@ -134,11 +134,11 @@ main:
 
 	;--- Si le bouton est appuyé, allume la LED
 boucl
-	CALL	etat_bouton
+	CALL	etat_bouton; verif etat btn
 	LD	A,appui
-	CP	A, #0
-	JREQ	ledOn
-	JP	ledOff
+	CP	A, #0; btn apuyé?
+	JREQ	ledOn;si oui
+	JP	ledOff;si non
 
 
 

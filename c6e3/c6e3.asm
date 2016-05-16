@@ -134,6 +134,7 @@ test
 	call MAX7219_DisplayChar
 		
 boucl
+	WFI ;economie energie
 	JP	boucl
 
 
